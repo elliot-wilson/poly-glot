@@ -16,7 +16,7 @@ The application will need to do the following at minimum:
 
 * Generate and display 7 unique letters
 * Allow users to spell and submit words by typing or clicking on the letters
-* Check whether each word meets general critera (4+ letters, contains "key" letter, no extra letters)
+* Check whether each word meets general criteria (4+ letters, contains "key" letter, no extra letters)
 * Check whether each word is in the dictionary
 
 ### Additional features
@@ -52,9 +52,9 @@ This project will use:
 
 ## Timeline
 
-* **Friday and Weekend:** Build-out essential logic for game. Write Javascript that will be able to (1) generate a sequence of 7 random unique letters, (2) use letters to generate wordbank from dictionary (in assets folder), (3) determine whether a submitted word is in the wordbank (plus the other criteria).
+* **Friday and Weekend:** Build out essential logic for game. Write Javascript that will be able to (1) generate a sequence of 7 random unique letters, (2) use letters to generate wordbank from dictionary (in assets folder), (3) determine whether a submitted word is in the wordbank (etc.).
 
-* **Monday:** Finish any leftover core logic work. Next, build barebones display for game. Should have letter grid, input bar, and delete button. Build out ability to click a letter OR type it to spell a word.
+* **Monday:** Finish any leftover core logic work. Next, build barebones display for game. Should have letter grid, input bar, and delete button. Build out ability to click a letter or type it to spell a word.
 
 * **Tuesday:** Build display of successfully submitted words. Build logic that will calculate and display score based on submitted words vs. total possible points. Work on initial styling. Can buttons shrink when clicked on (or typed)? Should there be a "ding" sound if your word is accepted?
 
