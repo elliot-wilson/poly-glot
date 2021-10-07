@@ -4,11 +4,13 @@
 
 I love the New York Times' Spelling Bee game (https://www.nytimes.com/puzzles/spelling-bee). There's just one problem: they only release one puzzle per day! How am I supposed to procrastinate without an infinite supply of word puzzles?
 
-My solution is to build **Poly-Glot**, an application that builds customizable Spelling Bee-like word games.
+My solution is to build Poly-Glot, an application that builds customizable Spelling Bee-like word games.
 
-Gameplay is simple. Poly-Glot displays a group of letters that you can use to spell words. Your words can use any of the letters as many times you like, but each word _must_ include the "key" letter shown in the center of the display. Words must be at least 4 letters long, and they can't be proper nouns. Obscure or specialized words might not be in the dictionary.
+The gameplay is simple. Poly-Glot displays a group of letters that you can use to spell words. Your words can use any of the letters as many times you like, but each word _must_ include the "key" letter shown in the center of the display. Words must be at least 4 letters long, and they can't be proper nouns. Obscure or specialized words might not be in the dictionary.
 
 ## Fuctionality and MVPs
+
+### Minimum functionality
 
 The application will need to do the following at minimum:
 
@@ -17,12 +19,16 @@ The application will need to do the following at minimum:
 * Check whether each word meets general critera (4+ letters, contains "key" letter, no extra letters)
 * Check whether each word is in the dictionary
 
+### Additional features
+
 The project may also have additional functionality to make the game more pleasant:
 
 * Give users a score based on how many words they've submitted
 * Allow users to scramble the display (some words are easier to "see" after the letters are rearranged)
 * Provide a descriptions of the rules
 * Show an answer key once the player gives up
+
+### Bonus features
 
 The project can also be expanded to include more advanced features down the road:
 
