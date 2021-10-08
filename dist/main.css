@@ -1,4 +1,20 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+header {
+  display: flex;
+  justify-content: center;
+}
 
+.main-elements {
+  display: flex;
+  justify-content: center;
+}
+
+.board {
+  display: flex;
+  width: 400px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

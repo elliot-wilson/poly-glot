@@ -9,9 +9,23 @@
     <title>Poly-Glot</title>
 </head>
 <body>
-    <figure></figure>
-    <form>
-        <input type="text" name="guess">
-    </form>
+    <header>
+        <h1>Poly-Glot</h1>
+    </header>
+    <section class="main-elements">
+        <section class="board">
+            <button class="new-game">New Game</button>
+            <figure>
+                <ul class="letter-list"></ul>
+            </figure>
+            <form id="word-guess-form">
+                <input type="text" name="guess" id="guessed-word">
+                <input type="submit" value="submit">
+            </form>
+            <section class="word-display"><p>Successful words: </p>
+                <ul></ul>
+            </section>
+        </section>
+    </section>
 </body>
 </html>

@@ -1,6 +1,12 @@
-import { Grid } from '../word_grid/grid.js';
-window.Grid = Grid;
+import { Game } from '../word_grid/game';
+window.Game = Game;
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("hellllloooooo");
+    
+    const newGame = document.querySelector('.new-game');
+    newGame.addEventListener("click", () => {
+        const game = new Game ();
+        console.log(game.grid);
+    });
+
 });

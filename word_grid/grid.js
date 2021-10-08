@@ -4,7 +4,7 @@ class Grid {
     
     constructor (size = 7) {
         let gridData = this.generateValidLettersArr(size);
-        console.log(gridData);
+
         this.lettersArr = gridData.lettersArr;
         this.wordbank = gridData.wordbank;
         this.pangram = gridData.pangram;
@@ -58,7 +58,7 @@ class Grid {
         let boundPangram = this.isPangram.bind(this);
         
         while (!pangram) {
-            console.log("hey");    
+            
             lettersArr = this.generateLettersArr(size);
             keyLetter = lettersArr[Math.floor(lettersArr.length / 2)];
             wordbank = [];
