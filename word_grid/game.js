@@ -1,11 +1,18 @@
 import { Grid } from './grid.js';
 
 class Game {
-
+    
     constructor () {
-        this.grid = new Grid ();
-        this.wordDisplay = document.querySelector(".word-display");
 
+        
+        this.wordDisplay = document.querySelector(".word-display");
+        this.lettersDisplay = document.querySelector('.letter-list');
+        
+        this.clearGame();
+        
+        this.grid = new Grid ();
+        
+        
         this.renderletters();
         this.bindEvents();
     }
@@ -25,7 +32,6 @@ class Game {
     }
 
     renderletters() {
-        const lettersDisplay = document.querySelector('.letter-list');
 
         this.grid.lettersArr.forEach(letter => {
             let letterDisplay = document.createElement("li");
@@ -33,7 +39,7 @@ class Game {
             if (letter === this.grid.keyLetter) {
                 letterDisplay.innerText += "   <--- key letter";
             }
-            lettersDisplay.appendChild(letterDisplay);
+            this.lettersDisplay.appendChild(letterDisplay);
         });
 
     }
@@ -42,6 +48,14 @@ class Game {
         let wordElement = document.createElement("li");
         wordElement.innerText = word;
         this.wordDisplay.appendChild(wordElement);
+    }
+
+    clearGame() {
+        let children = this.lettersDisplay.children;
+
+        while (children.length > 0) {
+            children[0].remove();
+        }
     }
 
 
