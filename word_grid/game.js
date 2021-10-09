@@ -5,7 +5,7 @@ class Game {
     constructor () {
 
         
-        this.wordDisplay = document.querySelector(".word-display");
+        this.wordDisplayList = document.querySelector(".word-display-list");
         this.lettersDisplay = document.querySelector('.letter-list');
         
         this.clearGame();
@@ -19,19 +19,29 @@ class Game {
 
     bindEvents() {
         const submitButton = document.querySelector('#word-guess-form');
-        submitButton.addEventListener("submit", e => {
+        console.log("hello");
+        console.log(this);
+        submitButton.addEventListener("submit", wordcheck(e))
+        
+        function wordcheck (e) {
+            submitButton.classList.add("evented");
             e.preventDefault();
-
+            console.log("heyyyy");
+            console.log(this);
             let word = document.querySelector('#guessed-word');
             if (this.grid.wordbank.includes(word.value)) {
                 this.addWord(word.value);
             }
 
             word.value = "";
-        });
+        };
     }
 
     renderletters() {
+
+        const canvas = document.querySelector('#canvas');
+        const ctx = canvas.getContext('2d');
+
 
         this.grid.lettersArr.forEach(letter => {
             let letterDisplay = document.createElement("li");
@@ -40,21 +50,49 @@ class Game {
                 letterDisplay.innerText += "   <--- key letter";
             }
             this.lettersDisplay.appendChild(letterDisplay);
+            drawHexagon(50, 50, letter);
         });
+
+        function drawHexagon(x, y, letter) {
+            const a = 2 * Math.PI / 6;
+            const r = 30;
+            ctx.beginPath();
+            for (var i = 0; i < 6; i++) {
+                ctx.lineTo(x + r * Math.cos(a * i), y + r * Math.sin(a * i));
+            }
+            ctx.closePath();
+            ctx.stroke();
+            ctx.font = "20px Georgia";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(letter, x, y);
+        }
 
     }
 
     addWord(word) {
         let wordElement = document.createElement("li");
         wordElement.innerText = word;
-        this.wordDisplay.appendChild(wordElement);
+        this.wordDisplayList.appendChild(wordElement);
     }
 
     clearGame() {
-        let children = this.lettersDisplay.children;
+        let letters = this.lettersDisplay.children;
 
-        while (children.length > 0) {
-            children[0].remove();
+        while (letters.length > 0) {
+            letters[0].remove();
+        }
+
+        let words = this.wordDisplayList.children;
+
+        while (words.length > 0) {
+            words[0].remove();
+        }
+
+        const submitButton = document.querySelector('#word-guess-form');
+
+        if (submitButton.classList.contains("evented")) {
+            submitButton.removeEventListener("submit", wordCheck);
         }
     }
 
