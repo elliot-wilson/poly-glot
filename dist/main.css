@@ -18,3 +18,8 @@ header {
   justify-content: center;
   align-items: center;
 }
+
+svg text {
+  font-family: sans-serif;
+  font-size: 25px;
+}

@@ -1,72 +1,76 @@
 import { Grid } from './grid.js';
+import { ShapeUtil } from './shapeutil.js';
 
 class Game {
     
-    constructor () {
+    constructor (size = 7) {
 
         
         this.wordDisplayList = document.querySelector(".word-display-list");
         this.lettersDisplay = document.querySelector('.letter-list');
         
         this.clearGame();
-        
+
         this.grid = new Grid ();
         
-        
-        this.renderletters();
+        this.renderLetters();
         this.bindEvents();
     }
-
+    
     bindEvents() {
+        this.createForm();
         const submitButton = document.querySelector('#word-guess-form');
-        console.log("hello");
-        console.log(this);
-        submitButton.addEventListener("submit", wordcheck(e))
-        
-        function wordcheck (e) {
-            submitButton.classList.add("evented");
-            e.preventDefault();
-            console.log("heyyyy");
-            console.log(this);
-            let word = document.querySelector('#guessed-word');
-            if (this.grid.wordbank.includes(word.value)) {
-                this.addWord(word.value);
-            }
-
-            word.value = "";
-        };
+        const boundSubmitWord = this.submitWord.bind(this);
+        submitButton.addEventListener("submit", boundSubmitWord);
+        submitButton.classList.add("listener-event");
     }
 
-    renderletters() {
+    createForm() {
+        let submitWordForm = document.createElement("form");
+        submitWordForm.setAttribute("id", "word-guess-form");
 
-        const canvas = document.querySelector('#canvas');
-        const ctx = canvas.getContext('2d');
+        let submitWordText = document.createElement("input");
+        submitWordText.setAttribute("type", "text");
+        submitWordText.setAttribute("id", "guessed-word");
 
+        let submitWordButton = document.createElement("input");
+        submitWordButton.setAttribute("type", "submit");
+        submitWordButton.setAttribute("value", "submit");
+
+        submitWordForm.appendChild(submitWordText);
+        submitWordForm.appendChild(submitWordButton);
+
+        let board = document.querySelector('.board');
+        let display = document.querySelector('.word-display');
+        board.insertBefore(submitWordForm, display);
+
+    }
+
+    submitWord(event) {
+        event.preventDefault();
+        console.log(this);
+        console.log(this.grid.wordbank);
+        let word = document.querySelector('#guessed-word');
+        console.log(word.value);
+        if (this.grid.wordbank.includes(word.value)) {
+            this.addWord(word.value);
+        }
+        word.value = "";
+    }
+
+    renderLetters() {
 
         this.grid.lettersArr.forEach(letter => {
+            ShapeUtil.createSVGelement(letter);
             let letterDisplay = document.createElement("li");
-            letterDisplay.innerText = letter;
             if (letter === this.grid.keyLetter) {
-                letterDisplay.innerText += "   <--- key letter";
+                letterDisplay.classList.add("central-letter");
             }
+            letterDisplay.innerText = letter;
             this.lettersDisplay.appendChild(letterDisplay);
-            drawHexagon(50, 50, letter);
+            ShapeUtil.createHexagon(letter);
         });
 
-        function drawHexagon(x, y, letter) {
-            const a = 2 * Math.PI / 6;
-            const r = 30;
-            ctx.beginPath();
-            for (var i = 0; i < 6; i++) {
-                ctx.lineTo(x + r * Math.cos(a * i), y + r * Math.sin(a * i));
-            }
-            ctx.closePath();
-            ctx.stroke();
-            ctx.font = "20px Georgia";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.fillText(letter, x, y);
-        }
 
     }
 
@@ -89,11 +93,14 @@ class Game {
             words[0].remove();
         }
 
-        const submitButton = document.querySelector('#word-guess-form');
+        let svgs = document.querySelector('.polygon-container').children;
 
-        if (submitButton.classList.contains("evented")) {
-            submitButton.removeEventListener("submit", wordCheck);
+        while (svgs.length > 0) {
+            svgs[0].remove();
         }
+
+        const submitForm = document.querySelector('#word-guess-form');
+        if (submitForm !== null) submitForm.remove();
     }
 
 
