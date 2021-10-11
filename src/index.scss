@@ -22,3 +22,16 @@ svg text {
     font-family: sans-serif;
     font-size: 25px;
 }
+
+.polygon-container {
+    display: flex;
+}
+
+.central-letter polygon {
+    fill: aliceblue;
+}
+
+.central-letter text {
+    font-weight: 700;
+    font-size: 27px;
+}

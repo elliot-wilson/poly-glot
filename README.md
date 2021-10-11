@@ -58,6 +58,6 @@ This project will use:
 
 * **Tuesday:** Build display of successfully submitted words. Build logic that will calculate and display score based on submitted words vs. total possible points. Work on initial styling. Can buttons shrink when clicked on (or typed)? Should there be a "ding" sound if your word is accepted?
 
-* **Wedneday:** More styling and bug-testing. Prevent repeated words. Build a "scramble" button if there's time. Build a "New Game" button.
+* **Wednesday:** More styling and bug-testing. Prevent repeated words. Build a "scramble" button if there's time. Build a "New Game" button.
 
 * **Thursday:** Practice demoing the application. Put on Github.

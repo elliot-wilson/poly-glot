@@ -5,9 +5,8 @@ class Game {
     
     constructor (size = 7) {
 
-        
+        this.score = 0;
         this.wordDisplayList = document.querySelector(".word-display-list");
-        this.lettersDisplay = document.querySelector('.letter-list');
         
         this.clearGame();
 
@@ -54,21 +53,34 @@ class Game {
         console.log(word.value);
         if (this.grid.wordbank.includes(word.value)) {
             this.addWord(word.value);
+            this.scoreWord(word.value);
         }
         word.value = "";
+    }
+
+    scoreWord(word) {
+        if (word.length === 4) {
+            this.score += 1;
+        }else if (word === this.grid.pangram) { 
+            this.score += word.length + 16;
+        }else {
+            this.score += word.length;
+        }
+        console.log(this.score);
+    }
+
+    calculateLevel() {
+
     }
 
     renderLetters() {
 
         this.grid.lettersArr.forEach(letter => {
-            ShapeUtil.createSVGelement(letter);
-            let letterDisplay = document.createElement("li");
-            if (letter === this.grid.keyLetter) {
-                letterDisplay.classList.add("central-letter");
-            }
-            letterDisplay.innerText = letter;
-            this.lettersDisplay.appendChild(letterDisplay);
+            let svg = ShapeUtil.createSVGelement(letter);
             ShapeUtil.createHexagon(letter);
+            if (letter === this.grid.keyLetter) {
+                svg.classList.add("central-letter");
+            }
         });
 
 
@@ -81,11 +93,6 @@ class Game {
     }
 
     clearGame() {
-        let letters = this.lettersDisplay.children;
-
-        while (letters.length > 0) {
-            letters[0].remove();
-        }
 
         let words = this.wordDisplayList.children;
 

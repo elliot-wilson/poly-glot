@@ -7,8 +7,9 @@ class Grid {
 
         this.lettersArr = gridData.lettersArr;
         this.wordbank = gridData.wordbank;
-        this.pangram = gridData.pangram;
+        this.pangrams = gridData.pangrams;
         this.keyLetter = gridData.keyLetter;
+        this.maxScore = this.maxScore(this.wordbank);
     }
     
     vowels () {
@@ -53,11 +54,11 @@ class Grid {
         let keyLetter;
         let wordbank;
         let regex;
-        let pangram = false;
+        let pangrams = [];
 
         let boundPangram = this.isPangram.bind(this);
         
-        while (!pangram) {
+        while (pangrams.length === 0) {
             
             lettersArr = this.generateLettersArr(size);
             keyLetter = lettersArr[Math.floor(lettersArr.length / 2)];
@@ -66,12 +67,25 @@ class Grid {
             
             Object.keys(Dictionary).forEach(word => {
                 if (regex.test(word) && word.includes(keyLetter)) wordbank.push(word);
-                if (boundPangram(word, lettersArr)) pangram = word;
+                if (boundPangram(word, lettersArr)) pangrams.push(word);
             });
 
         }
 
-        return {pangram: pangram, lettersArr: lettersArr, wordbank: wordbank, keyLetter: keyLetter};
+        return {pangrams: pangrams, lettersArr: lettersArr, wordbank: wordbank, keyLetter: keyLetter};
+    }
+
+    maxScore (wordbank) {
+        let maxScore = 0;
+        wordbank.forEach(word => {
+            if (word.length === 4) {
+                maxScore += 1;
+            }else {
+                maxScore += word.length
+                if (this.pangrams.includes(word)) maxScore += 16;
+            }
+        });
+        return maxScore;
     }
 
 }
