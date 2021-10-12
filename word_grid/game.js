@@ -12,70 +12,66 @@ class Game {
         
         this.grid = new Grid ();
         this.level = this.calculateLevel();
+        this.words = [];
         
         this.renderLetters();
-        this.bindEvents();
-    }
-    
-    bindEvents() {
-        this.createForm();
-
-        const submitButton = document.querySelector('#word-guess-form');
-        const boundSubmitWord = this.submitWord.bind(this);
-
-        submitButton.addEventListener("submit", boundSubmitWord);
-        submitButton.classList.add("listener-event");
-
-        document.addEventListener('keydown', this.logKey.bind(this));
     }
 
     logKey(event) {
-        console.log(this);
         let input = document.querySelector('#guessed-word');
         let alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+        if (input.classList.contains("blank")) {
+            input.innerText = "";
+            input.classList.remove("blank");
+        }
+
+        
         if (alphabet.includes(event.key)) {
-            input.value += event.key;
-        }else if (event.key === "Backspace") {
-            input.value = input.value.slice(0, input.value.length - 1);
+            input.innerText += event.key;
+            if (this.grid.lettersArr.includes(event.key)){
+                this.changeKeyColor(event);
+            }
         }else if (event.key === "Enter"){
             this.submitWord();
+        }else if (event.key === "Backspace") {
+            input.innerText = input.innerText.slice(0, input.innerText.length - 1);
+        }
+        
+        if (input.innerText.length === 0) {
+            this.resetInputElement(input);
         }
     }
 
-    createForm() {
-        let submitWordForm = document.createElement("form");
-        submitWordForm.setAttribute("id", "word-guess-form");
+    changeKeyColor(event) {
+        let container = document.querySelector(`.${event.key}-container`);
+        container.classList.add("clicked-letter");
+        setTimeout(() => {
+            container.classList.remove("clicked-letter");
+        }, 175);
+    }
 
-        let submitWordText = document.createElement("input");
-        submitWordText.setAttribute("type", "text");
-        submitWordText.setAttribute("id", "guessed-word");
 
-        let submitWordButton = document.createElement("input");
-        submitWordButton.setAttribute("type", "submit");
-        submitWordButton.setAttribute("value", "submit");
-
-        submitWordForm.appendChild(submitWordText);
-        submitWordForm.appendChild(submitWordButton);
-
-        let board = document.querySelector('.board');
-        board.appendChild(submitWordForm);
-
+    resetInputElement(inputElement){
+        inputElement.classList.add("blank");
+        inputElement.innerText = "Type or click";
     }
 
     submitWord(event) {
         if (event) event.preventDefault();
 
         let input = document.querySelector('#guessed-word');
-        let word = input.value.trim();
-        if (this.grid.wordbank.includes(word)) {
+        let word = input.innerText.trim();
+        if (this.grid.wordbank.includes(word) && !this.words.includes(word)) {
             this.addWord(word);
             this.displayScore(word);
             this.calculateLevel();
+            setTimeout(this.clearResult, 1250);
         }else {
             this.displayError(word);
+            setTimeout(this.clearResult, 1250);
         }
-        setTimeout(this.clearResult, 1250);
-        input.value = "";
+        this.resetInputElement(input);
     }
 
 
@@ -87,7 +83,9 @@ class Game {
             errorMessage = "words must be 4 letters or more";
         }else if (!word.includes(this.grid.keyLetter)) {
             errorMessage = "words must include center letter";
-        }else {
+        }else if (this.words.includes(word)) {
+            errorMessage = "word already submitted";
+        }else{
             errorMessage = "invalid word";
         }
 
@@ -153,7 +151,6 @@ class Game {
         }
 
         this.level = level;
-        console.log(level);
     }
 
     renderLetters() {
@@ -170,6 +167,7 @@ class Game {
     }
 
     addWord(word) {
+        this.words.push(word);
         let wordElement = document.createElement("li");
         wordElement.innerText = word;
         this.wordDisplayList.appendChild(wordElement);
