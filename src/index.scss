@@ -3,11 +3,33 @@ header {
     justify-content: center;
 }
 
+header h1 {
+    font-size: 80px;
+}
+
+body {
+    background: url('../assets/images/arundel 324 ff4v-5.jpeg');
+}
+
 .main-elements {
     display: flex;
-    justify-content: center;
-    // background-image: url(https://upload.wikimedia.org/wikipedia/commons/7/70/Papyrus_MET_cop0896s1.jpg);
-    // background-position: center;
+    justify-content: space-between;
+    height: 400px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+
+.instructions {
+    background: white;
+    border: 1px solid black;
+    width: 300px;
+}
+
+.word-display {
+    background: white;
+    width: 300px;
+    border: 1px solid black;
 }
 
 .board {
@@ -25,6 +47,13 @@ svg text {
 
 .polygon-container {
     display: flex;
+    width: 400px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background: white;
+    border: 1px solid black;
 }
 
 .central-letter polygon {
@@ -34,4 +63,35 @@ svg text {
 .central-letter text {
     font-weight: 700;
     font-size: 27px;
+}
+
+.button-div {
+    display: flex;
+    justify-content: center;
+}
+
+// possibly send to internal styling
+
+.polygon-container svg:nth-of-type(1) {
+    transform: translate(50%, 40%);
+}
+
+.polygon-container svg:nth-of-type(2) {
+    transform: translate(50%, 40%);
+}
+
+.polygon-container svg:nth-of-type(3) {
+    transform: translate(-150%, 198%);
+}
+
+.polygon-container svg:nth-of-type(4) {
+    transform: translate(100%, 0%);
+}
+
+.polygon-container svg:nth-of-type(5) {
+    transform: translate(-100%, 0%);
+}
+
+.polygon-container svg:nth-of-type(7) {
+    transform: translate(50%, -42%);
 }

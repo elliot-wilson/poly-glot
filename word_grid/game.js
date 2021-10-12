@@ -40,8 +40,7 @@ class Game {
         submitWordForm.appendChild(submitWordButton);
 
         let board = document.querySelector('.board');
-        let display = document.querySelector('.word-display');
-        board.insertBefore(submitWordForm, display);
+        board.appendChild(submitWordForm);
 
     }
 
