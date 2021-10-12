@@ -9,8 +9,9 @@ class Game {
         this.wordDisplayList = document.querySelector(".word-display-list");
         
         this.clearGame();
-
+        
         this.grid = new Grid ();
+        this.level = this.calculateLevel();
         
         this.renderLetters();
         this.bindEvents();
@@ -18,10 +19,27 @@ class Game {
     
     bindEvents() {
         this.createForm();
+
         const submitButton = document.querySelector('#word-guess-form');
         const boundSubmitWord = this.submitWord.bind(this);
+
         submitButton.addEventListener("submit", boundSubmitWord);
         submitButton.classList.add("listener-event");
+
+        document.addEventListener('keydown', this.logKey.bind(this));
+    }
+
+    logKey(event) {
+        console.log(this);
+        let input = document.querySelector('#guessed-word');
+        let alphabet = "abcdefghijklmnopqrstuvwxyz";
+        if (alphabet.includes(event.key)) {
+            input.value += event.key;
+        }else if (event.key === "Backspace") {
+            input.value = input.value.slice(0, input.value.length - 1);
+        }else if (event.key === "Enter"){
+            this.submitWord();
+        }
     }
 
     createForm() {
@@ -45,31 +63,97 @@ class Game {
     }
 
     submitWord(event) {
-        event.preventDefault();
-        console.log(this);
-        console.log(this.grid.wordbank);
-        let word = document.querySelector('#guessed-word');
-        console.log(word.value);
-        if (this.grid.wordbank.includes(word.value)) {
-            this.addWord(word.value);
-            this.scoreWord(word.value);
+        if (event) event.preventDefault();
+
+        let input = document.querySelector('#guessed-word');
+        let word = input.value.trim();
+        if (this.grid.wordbank.includes(word)) {
+            this.addWord(word);
+            this.displayScore(word);
+            this.calculateLevel();
+        }else {
+            this.displayError(word);
         }
-        word.value = "";
+        setTimeout(this.clearResult, 1250);
+        input.value = "";
     }
 
-    scoreWord(word) {
-        if (word.length === 4) {
-            this.score += 1;
-        }else if (word === this.grid.pangram) { 
-            this.score += word.length + 16;
+
+    displayError(word) {
+
+        let errorMessage;
+
+        if (word.length < 4) {
+            errorMessage = "words must be 4 letters or more";
+        }else if (!word.includes(this.grid.keyLetter)) {
+            errorMessage = "words must include center letter";
         }else {
-            this.score += word.length;
+            errorMessage = "invalid word";
         }
-        console.log(this.score);
+
+        let resultDisplay = document.querySelector('.result-display-text');
+
+        resultDisplay.innerText = errorMessage;
+
+    }
+
+    clearResult() {
+        let resultDisplay = document.querySelector('.result-display-text');
+        resultDisplay.innerText = "";
+    }
+
+    calculateScore(word) {
+        let score = 0;
+        if (word.length === 4) {
+            score += 1;
+        }else if (this.grid.pangrams.includes(word)) { 
+            score += word.length + 7;
+        }else {
+            score += word.length;
+        }
+        return score;
+    }
+
+    displayScore (word) {
+        let score = this.calculateScore(word);
+
+        this.score += score;
+
+        let resultDisplay = document.querySelector('.result-display-text');
+        let text = score > 1 ? `${score} points!` : `${score} point!`;
+        if (this.grid.pangrams.includes(word)) text += " pangram!";
+        resultDisplay.innerText = text;
+
+        let scoreDisplay = document.querySelector(".score-text");
+        scoreDisplay.innerText = this.score;
     }
 
     calculateLevel() {
 
+        let maxScore = this.grid.maxScore;
+
+        let scorePercentage = this.score / maxScore;
+
+        let level;
+
+        if (scorePercentage < .05) {
+            level = "Getting Started";
+        }else if (scorePercentage < .20) {
+            level = "Good";
+        }else if (scorePercentage < .30) {
+            level = "Impressive";
+        }else if (scorePercentage < .40) {
+            level = "Great";
+        }else if (scorePercentage < .50) {
+            level = "Amazing";
+        }else if (scorePercentage < .60) {
+            level = "Polymath";
+        }else {
+            level = "Savant";
+        }
+
+        this.level = level;
+        console.log(level);
     }
 
     renderLetters() {
