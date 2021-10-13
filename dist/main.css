@@ -40,6 +40,7 @@ body {
   width: 1%;
   height: 25px;
   background-color: mediumseagreen;
+  border-radius: 2px;
 }
 
 .score-display-container {
@@ -166,6 +167,7 @@ svg text {
 
 .word-display-list {
   margin: 5px;
+  font-weight: 400;
   font-family: inherit;
   display: flex;
   flex-direction: column;
@@ -187,11 +189,33 @@ svg text {
   border-radius: 15px;
 }
 
-button {
+.button-div {
+  font-size: 22px;
+}
+
+.button {
   background: white;
   border-radius: 4px;
   font: inherit;
   font-family: sans-serif;
+  border: 1px solid black;
+  padding: 2px;
+  box-shadow: 1px 1px 1px #999;
+  margin-right: 5px;
+}
+
+.button-div .button {
+  padding: 0.5%;
+}
+
+.button:hover {
+  background: lightgrey;
+}
+
+.button:active, .clicked-button {
+  background: lightgrey;
+  transform: translateY(1px);
+  box-shadow: #666;
 }
 
 .polygon-container svg:nth-of-type(1) {
@@ -216,4 +240,19 @@ button {
 
 .polygon-container svg:nth-of-type(7) {
   transform: translate(50%, -41%);
+}
+
+@media (max-width: 1120px) {
+  .instructions {
+    display: none;
+  }
+
+  .gameplay-elements {
+    justify-content: space-around;
+  }
+}
+@media (max-width: 790px) {
+  .word-display {
+    display: none;
+  }
 }

@@ -26,8 +26,8 @@ class Game {
     }
 
     activateSubmitButton() {
-        let submitButton = document.createElement('button');
-        submitButton.classList.add('submit');
+        let submitButton = document.createElement('div');
+        submitButton.classList.add('submit', 'button');
         submitButton.innerText = "Enter";
         
         let buttonDiv = document.querySelector('.button-div');
@@ -89,8 +89,12 @@ class Game {
                 this.changeKeyColor(letter);
             }
         } else if (letter === "Enter"){
+            let submitButton = document.querySelector('.submit');
             this.submitWord();
+            this.pressButton(submitButton);
         } else if (letter === "Backspace") {
+            let deleteButton = document.querySelector('.delete');
+            this.pressButton(deleteButton);
             input.innerText = input.innerText.slice(0, input.innerText.length - 1);
         }
 
@@ -104,6 +108,13 @@ class Game {
             errorDisplay.innerText = "don't do that!";
             setTimeout(this.clearResult, 1250);
         }
+    }
+
+    pressButton(button) {
+        button.classList.add('clicked-button');
+        setTimeout(() => {
+            button.classList.remove('clicked-button');
+        }, 175);
     }
 
     changeKeyColor(letter) {
@@ -245,7 +256,7 @@ class Game {
         lettersArr = lettersArr.slice(0, middleIdx).concat(lettersArr.slice(middleIdx + 1));
         lettersArr = ShapeUtil.shuffleArray(lettersArr);
         lettersArr.splice(middleIdx, 0, this.grid.keyLetter);
-        
+
         return lettersArr;
     }
 
