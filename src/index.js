@@ -3,7 +3,7 @@ import { Game } from '../word_grid/game';
 document.addEventListener("DOMContentLoaded", () => {
     let game = new Game ();
 
-    let boundKeyLogger = game.logKey.bind(game);
+    let boundKeyLogger = game.processKeyLogEvent.bind(game);
     document.addEventListener('keydown', boundKeyLogger);
     
     window.game = game;
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     newGame.addEventListener("click", () => {
         document.removeEventListener('keydown', boundKeyLogger);
         game = new Game ();
-        boundKeyLogger = game.logKey.bind(game);
+        boundKeyLogger = game.processKeyLogEvent.bind(game);
         document.addEventListener('keydown', boundKeyLogger);
         window.game = game;
 

@@ -136,6 +136,10 @@ svg text {
     list-style: inside;
 }
 
+footer ul {
+    display: flex;
+}
+
 // possibly send to internal styling
 
 .polygon-container svg:nth-of-type(1) {

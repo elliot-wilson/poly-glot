@@ -138,6 +138,10 @@ svg text {
   list-style: inside;
 }
 
+footer ul {
+  display: flex;
+}
+
 .polygon-container svg:nth-of-type(1) {
   transform: translate(50%, 40%);
 }

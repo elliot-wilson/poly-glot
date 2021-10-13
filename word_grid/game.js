@@ -15,9 +15,27 @@ class Game {
         this.words = [];
         
         this.renderLetters();
+        this.registerClick();
     }
 
-    logKey(event) {
+    registerClick() {
+        let svgs = Array.from(document.querySelector('.polygon-container').children);
+
+        svgs.forEach(svg => {
+            svg.addEventListener("click", event => {
+                let letter = event.currentTarget.children[1].innerHTML;
+                this.processLetter(letter);
+            });
+        });
+    }
+
+    processKeyLogEvent(event) {
+        let letter = event.key;
+
+        this.processLetter(letter);
+    }
+
+    processLetter(letter) {
         let input = document.querySelector('#guessed-word');
         let alphabet = "abcdefghijklmnopqrstuvwxyz";
 
@@ -25,26 +43,32 @@ class Game {
             input.innerText = "";
             input.classList.remove("blank");
         }
-
         
-        if (alphabet.includes(event.key)) {
-            input.innerText += event.key;
-            if (this.grid.lettersArr.includes(event.key)){
-                this.changeKeyColor(event);
+        if (alphabet.includes(letter)) {
+            input.innerText += letter;
+            if (this.grid.lettersArr.includes(letter)){
+                this.changeKeyColor(letter);
             }
-        }else if (event.key === "Enter"){
+        }else if (letter === "Enter"){
             this.submitWord();
-        }else if (event.key === "Backspace") {
+        }else if (letter === "Backspace") {
             input.innerText = input.innerText.slice(0, input.innerText.length - 1);
         }
-        
+
         if (input.innerText.length === 0) {
             this.resetInputElement(input);
         }
+        
+        if (input.innerText.length > 30) {
+            this.resetInputElement(input);
+            let errorDisplay = document.querySelector('.result-display-text');
+            errorDisplay.innerText = "don't do that!";
+            setTimeout(this.clearResult, 1250);
+        }
     }
 
-    changeKeyColor(event) {
-        let container = document.querySelector(`.${event.key}-container`);
+    changeKeyColor(letter) {
+        let container = document.querySelector(`.${letter}-container`);
         container.classList.add("clicked-letter");
         setTimeout(() => {
             container.classList.remove("clicked-letter");
