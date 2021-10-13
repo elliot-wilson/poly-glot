@@ -14,7 +14,7 @@ class Game {
         this.level = this.calculateLevel();
         this.words = [];
         
-        this.renderLetters();
+        this.renderLetters(this.grid.lettersArr);
         this.bindEvents();
     }
     
@@ -22,6 +22,7 @@ class Game {
         this.registerClick();
         this.activateSubmitButton();
         this.registerDelete();
+        this.registerScramble();
     }
 
     activateSubmitButton() {
@@ -48,6 +49,14 @@ class Game {
         
     }
 
+    registerScramble() {
+        let scrambleButton = document.querySelector('.refresh');
+        scrambleButton.addEventListener('click', event => {
+            this.clearPolygons();
+            let shuffledLetters = this.shuffleLetters();
+            this.renderLetters(shuffledLetters);
+        });
+    }
 
     registerClick() {
         let svgs = Array.from(document.querySelector('.polygon-container').children);
@@ -229,17 +238,26 @@ class Game {
         level.innerText = this.level;
     }
     
+    shuffleLetters () {
+        let lettersArr = this.grid.lettersArr;
+        let middleIdx = Math.floor(lettersArr.length / 2);
 
-    renderLetters() {
+        lettersArr = lettersArr.slice(0, middleIdx).concat(lettersArr.slice(middleIdx + 1));
+        lettersArr = ShapeUtil.shuffleArray(lettersArr);
+        lettersArr.splice(middleIdx, 0, this.grid.keyLetter);
+        
+        return lettersArr;
+    }
 
-        this.grid.lettersArr.forEach(letter => {
+    renderLetters(letters) {
+
+        letters.forEach(letter => {
             let svg = ShapeUtil.createSVGelement(letter);
             ShapeUtil.createHexagon(letter);
             if (letter === this.grid.keyLetter) {
                 svg.classList.add("central-letter");
             }
         });
-
 
     }
 
@@ -251,25 +269,38 @@ class Game {
     }
 
     clearGame() {
-
+        this.clearSubmittedWords();
+        this.clearPolygons();
+        this.removeSubmitButton();
+        this.clearScore();
+    }
+    
+    clearSubmittedWords() {        
         let words = this.wordDisplayList.children;
         while (words.length > 0) {
             words[0].remove();
         }
+    }
+    
+    removeSubmitButton() {
+        const submitButton = document.querySelector('.submit');
+        if (submitButton !== null) submitButton.remove();
+    }
+    
+    clearScore() {  
+        let points = document.getElementById('score');
+        points.innerText = 0;
 
+        let scoreBar = document.querySelector('.score-bar-graph');
+        scoreBar.style.width = "1%";
+    }
+    
+    clearPolygons() {
+        
         let svgs = document.querySelector('.polygon-container').children;
         while (svgs.length > 0) {
             svgs[0].remove();
         }
-
-        let points = document.getElementById('score');
-        points.innerText = 0;
-
-        const submitButton = document.querySelector('.submit');
-        if (submitButton !== null) submitButton.remove();
-
-        let scoreBar = document.querySelector('.score-bar-graph');
-        scoreBar.style.width = "1%";
     }
 
 

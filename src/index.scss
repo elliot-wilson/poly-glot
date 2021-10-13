@@ -52,12 +52,6 @@ body {
     border-radius: 4px;
 }
 
-.instructions p {
-    font-family: sans-serif;
-    padding: 7px;
-    text-align: center;
-}
-
 .gameplay-elements {
     display: flex;
     justify-content: space-between;
@@ -153,10 +147,19 @@ svg text {
     fill: brown;
 }
 
-.word-display {
+.instructions p {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.word-display, .instructions p {
     text-align: center;
     font-family: sans-serif;
     padding-top: 10px;
+}
+
+.text-box-top {
+    font-weight: 700;
 }
 
 .word-display-list {
@@ -214,3 +217,5 @@ button {
 .polygon-container svg:nth-of-type(7) {
     transform: translate(50%, -41%);
 }
+
+//width 1120px
