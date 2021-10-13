@@ -21,6 +21,7 @@ class Game {
     bindEvents () {
         this.registerClick();
         this.activateSubmitButton();
+        this.registerDelete();
     }
 
     activateSubmitButton() {
@@ -29,11 +30,22 @@ class Game {
         submitButton.innerText = "Enter";
         
         let buttonDiv = document.querySelector('.button-div');
-        buttonDiv.appendChild(submitButton);
-
+        let deleteButton = document.querySelector('.delete');
+        buttonDiv.insertBefore(submitButton, deleteButton);
+        
         submitButton.addEventListener('click', event => {
             this.submitWord();
         });
+    }
+    
+    registerDelete() {
+        let deleteButton = document.querySelector('.delete');
+        let input = document.querySelector('#guessed-word');
+
+        deleteButton.addEventListener('click', event => {
+            this.resetInputElement(input);
+        });
+        
     }
 
 
@@ -167,36 +179,56 @@ class Game {
         let resultDisplay = document.querySelector('.result-display-text');
         resultDisplay.innerText = text;
 
-        let scoreDisplay = document.querySelector(".score-display");
+        this.updateScoreBar();
+
+        let scoreDisplay = document.querySelector("#score");
         scoreDisplay.innerText = this.score;
     }
 
+    updateScoreBar() {
+        let maxScore = this.grid.maxScore;
+        let scorePercentage = this.score / maxScore;
+        let scorePercentageAdj = scorePercentage / 0.6 * 100;
+        
+        let scoreBar = document.querySelector('.score-bar-graph');
+
+        scoreBar.style.width = scorePercentageAdj + "%";
+    }
+    
     calculateLevel() {
 
         let maxScore = this.grid.maxScore;
-
+        
         let scorePercentage = this.score / maxScore;
-
+        
         let level;
-
-        if (scorePercentage < .05) {
+        
+        if (scorePercentage < 0.05) {
             level = "Getting Started";
-        }else if (scorePercentage < .20) {
+        }else if (scorePercentage < 0.20) {
             level = "Good";
-        }else if (scorePercentage < .30) {
+        }else if (scorePercentage < 0.30) {
             level = "Impressive";
-        }else if (scorePercentage < .40) {
+        }else if (scorePercentage < 0.40) {
             level = "Great";
-        }else if (scorePercentage < .50) {
+        }else if (scorePercentage < 0.50) {
             level = "Amazing";
-        }else if (scorePercentage < .60) {
+        }else if (scorePercentage < 0.60) {
             level = "Polymath";
         }else {
             level = "Savant";
         }
-
+        
         this.level = level;
+
+        this.updateLevelDisplay();
     }
+
+    updateLevelDisplay() {
+        let level = document.getElementById('level');
+        level.innerText = this.level;
+    }
+    
 
     renderLetters() {
 
@@ -221,19 +253,23 @@ class Game {
     clearGame() {
 
         let words = this.wordDisplayList.children;
-
         while (words.length > 0) {
             words[0].remove();
         }
 
         let svgs = document.querySelector('.polygon-container').children;
-
         while (svgs.length > 0) {
             svgs[0].remove();
         }
 
+        let points = document.getElementById('score');
+        points.innerText = 0;
+
         const submitButton = document.querySelector('.submit');
         if (submitButton !== null) submitButton.remove();
+
+        let scoreBar = document.querySelector('.score-bar-graph');
+        scoreBar.style.width = "1%";
     }
 
 
