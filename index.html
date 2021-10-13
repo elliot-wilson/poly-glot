@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/reset.css"/>
-    <link rel="stylesheet" href="./dist/main.css" />
+    <link rel="stylesheet" href="./dist/main.css"/>
+    <script src="https://use.fontawesome.com/4b3cccde11.js"></script>
     <script src="./dist/main.js"></script>
     <title>Poly-Glot</title>
 </head>
@@ -15,13 +16,20 @@
             <h1>Poly-Glot</h1>
         </header>
         <section class="scoring-elements">
-            <div class="score-display"></div>
-            <div class="score-bar-display"></div>
+            <div class="score-display-containter">
+                <span class="score-display">0</span>
+            </div>
+            <div class="score-bar-container">
+                <div class="score-bar-graph"></div>
+            </div>
         </section>
         <section class="gameplay-elements">
             <section class="instructions">
                 <p>Instructions</p>
                 <p id="instructions-text">Time to play Poly-Glot! Spell words using the letters in the polygons, but watch out: words must be at least 4 letters long, and all words must contain the central letter. Four-letter words are worth only 1 point, but longer words are worth 1 point per letter. If your word contains <i>all</i> the available letters, you get bonus points equal to the number of shapes in the grid.</p>
+                <p>You can spell words by typing or clicking on the letters, and you can also refresh the view to see the letters in a different arrangement.</p>
+                <p>After you're done, be sure to check out my <a href="https://github.com/elliot-wilson">Github</a> and <a href="https://www.linkedin.com/in/elliot-wilson-4897a81b9/">LinkedIn</a>.</p>
+                <p>Want to have a word? <a href="mailto: elliot.andrew.wilson@gmail.com">Email</a> me!</p>
             </section>
             <section class="board">
                 <section class="polygon-container">
@@ -38,23 +46,12 @@
             </section>
         </section>
         <div class="button-div">
+            <button class="refresh"><i class="fa fa-refresh" aria-hidden="true"></i></button>
             <button class="new-game">New Game</button>
         </div>
-        <div class="score">
-            <p class="score-text"></p>
-        </div>
-        <footer>
-            <ul>
-                <li>
-                    <a>Github</a>
-                </li>
-                <li>
-                    <a>LinkedIn</a>
-                </li>
-                <li>
-                    <a>Email</a>
-                </li>
-            </ul>
+        <footer class="nav-links">
+            <a href="https://github.com/elliot-wilson" id="github"><img src="assets/images/GitHub-Mark-32px.png"/></a>
+            <a href="https://www.linkedin.com/in/elliot-wilson-4897a81b9/"><img src="assets/images/linkedin.png"/></a>
         </footer>
     </section>
 </body>

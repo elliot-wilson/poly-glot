@@ -15,8 +15,27 @@ class Game {
         this.words = [];
         
         this.renderLetters();
-        this.registerClick();
+        this.bindEvents();
     }
+    
+    bindEvents () {
+        this.registerClick();
+        this.activateSubmitButton();
+    }
+
+    activateSubmitButton() {
+        let submitButton = document.createElement('button');
+        submitButton.classList.add('submit');
+        submitButton.innerText = "Enter";
+        
+        let buttonDiv = document.querySelector('.button-div');
+        buttonDiv.appendChild(submitButton);
+
+        submitButton.addEventListener('click', event => {
+            this.submitWord();
+        });
+    }
+
 
     registerClick() {
         let svgs = Array.from(document.querySelector('.polygon-container').children);
@@ -31,7 +50,6 @@ class Game {
 
     processKeyLogEvent(event) {
         let letter = event.key;
-
         this.processLetter(letter);
     }
 
@@ -49,9 +67,9 @@ class Game {
             if (this.grid.lettersArr.includes(letter)){
                 this.changeKeyColor(letter);
             }
-        }else if (letter === "Enter"){
+        } else if (letter === "Enter"){
             this.submitWord();
-        }else if (letter === "Backspace") {
+        } else if (letter === "Backspace") {
             input.innerText = input.innerText.slice(0, input.innerText.length - 1);
         }
 
@@ -83,6 +101,8 @@ class Game {
 
     submitWord(event) {
         if (event) event.preventDefault();
+
+        // set TimeOut for shading button
 
         let input = document.querySelector('#guessed-word');
         let word = input.innerText.trim();
@@ -141,12 +161,13 @@ class Game {
 
         this.score += score;
 
-        let resultDisplay = document.querySelector('.result-display-text');
         let text = score > 1 ? `${score} points!` : `${score} point!`;
         if (this.grid.pangrams.includes(word)) text += " pangram!";
+        
+        let resultDisplay = document.querySelector('.result-display-text');
         resultDisplay.innerText = text;
 
-        let scoreDisplay = document.querySelector(".score-text");
+        let scoreDisplay = document.querySelector(".score-display");
         scoreDisplay.innerText = this.score;
     }
 
@@ -211,8 +232,8 @@ class Game {
             svgs[0].remove();
         }
 
-        const submitForm = document.querySelector('#word-guess-form');
-        if (submitForm !== null) submitForm.remove();
+        const submitButton = document.querySelector('.submit');
+        if (submitButton !== null) submitButton.remove();
     }
 
 

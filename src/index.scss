@@ -18,6 +18,39 @@ body {
     background: url('../assets/images/arundel 324 ff4v-5.jpeg');
 }
 
+.scoring-elements {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0% 5%;
+    margin-bottom: 10px;
+}
+
+.score-bar-container {
+    width: 280px;
+    background: white;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.score-bar-graph {
+    width: 1%;
+    height: 25px;
+    background-color: mediumseagreen;
+}
+
+.score-display-container {
+    text-align: center;
+}
+
+.score-display {
+    vertical-align: middle;
+    background: white;
+    padding: 2px;
+    border: 1x solid black;
+    border-radius: 4px;
+}
+
 .instructions p {
     font-family: sans-serif;
     padding: 7px;
@@ -136,8 +169,16 @@ svg text {
     list-style: inside;
 }
 
-footer ul {
+.nav-links {
     display: flex;
+    justify-content: flex-end;
+    margin-right: 5%;
+}
+
+.nav-links img {
+    background: white;
+    margin: 10px;
+    border-radius: 15px;
 }
 
 // possibly send to internal styling
