@@ -1,4 +1,4 @@
-import { Dictionary } from './full_dictionary';
+import { Dictionary } from './best_dictionary.js';
 
 class Grid {
     

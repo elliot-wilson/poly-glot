@@ -134,8 +134,6 @@ class Game {
     submitWord(event) {
         if (event) event.preventDefault();
 
-        // set TimeOut for shading button
-
         let input = document.querySelector('#guessed-word');
         let word = input.innerText.trim();
         if (this.grid.wordbank.includes(word) && !this.words.includes(word)) {
@@ -208,7 +206,7 @@ class Game {
     updateScoreBar() {
         let maxScore = this.grid.maxScore;
         let scorePercentage = this.score / maxScore;
-        let scorePercentageAdj = scorePercentage / 0.6 * 100;
+        let scorePercentageAdj = Math.min(scorePercentage / 0.6 * 100, 100);
         
         let scoreBar = document.querySelector('.score-bar-graph');
 
@@ -277,6 +275,14 @@ class Game {
         let wordElement = document.createElement("li");
         wordElement.innerText = word;
         this.wordDisplayList.appendChild(wordElement);
+        this.adjustWordDisplay();
+    }
+
+    adjustWordDisplay() {
+
+        if (this.words.length > 66){
+            this.wordDisplayList.setAttribute("style", "font-size: 12.5px");
+        } 
     }
 
     clearGame() {

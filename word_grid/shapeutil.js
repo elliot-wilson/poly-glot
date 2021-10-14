@@ -18,9 +18,6 @@ const ShapeUtil = {
         let polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
         
         polygon.setAttribute("points", "50 3, 100 28, 100 75, 50 100, 3 75, 3 28");
-        polygon.setAttribute("stroke", "black");
-        polygon.setAttribute("fill", "#ad8b4c");
-        polygon.setAttribute("stroke-width", "5");
         
         let svg = document.querySelector(`.${letter}-container`);
         let text = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -28,8 +25,6 @@ const ShapeUtil = {
         text.setAttribute("x", "50%");
         text.setAttribute("y", "50%");
         text.setAttribute("dy", ".3em");
-        text.setAttribute("text-anchor", "middle");
-        text.setAttribute("stroke-width", "2px");
         
         text.innerHTML = letter;
         

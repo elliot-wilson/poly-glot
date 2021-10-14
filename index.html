@@ -16,12 +16,14 @@
             <h1>Poly-Glot</h1>
         </header>
         <section class="topline-elements">
-            <div class="new-game button">New Game</div>
-            <div class="score-display-containter">
-                <div class="score-display">Points: <span id="score">0</span></div>
-            </div>
-            <div class="level-display-containter">
-                <div class="level-display">Level: <span id="level">Getting Started</span></div>
+            <div class="new-game button topline-nonbar">New Game</div>
+            <div class="score-level">
+                <div class="score-display-containter">
+                    <div class="score-display topline-nonbar">Points: <span id="score">0</span></div>
+                </div>
+                <div class="level-display-containter">
+                    <div class="level-display topline-nonbar">Level: <span id="level">Getting Started</span></div>
+                </div>
             </div>
             <div class="score-bar-container">
                 <div class="score-bar-graph"></div>
@@ -30,10 +32,12 @@
         <section class="gameplay-elements">
             <section class="instructions">
                 <p class="text-box-top">Instructions:</p>
-                <p id="instructions-text">Time to play Poly-Glot! Spell words using the letters in the polygons, but watch out: words must be at least 4 letters long, and all words must contain the central letter. Four-letter words are worth only 1 point, but longer words are worth 1 point per letter. If your word contains <i>all</i> the available letters, you get bonus points equal to the number of shapes in the grid.</p>
-                <p>You can spell words by typing or clicking on the letters, and you can also refresh the view to see the letters in a different arrangement.</p>
-                <p>After you're done, be sure to check out my <a href="https://github.com/elliot-wilson">Github</a> and <a href="https://www.linkedin.com/in/elliot-wilson-4897a81b9/">LinkedIn</a>.</p>
-                <p>Want to have a word? <a href="mailto: elliot.andrew.wilson@gmail.com">Email</a> me!</p>
+                <section id="instructions-text">
+                    <p>Time to play Poly-Glot! Spell words using the letters in the polygons, but watch out: words must be at least 4 letters long, and all words must contain the central letter. Four-letter words are worth only 1 point, but longer words are worth 1 point per letter. If your word contains <i>all</i> the available letters, you get bonus points equal to the number of shapes in the grid.</p>
+                    <p>You can spell words by typing or clicking on the letters, and you can also refresh the view to see the letters in a different arrangement.</p>
+                    <p>After you're done, be sure to check out my <a href="https://github.com/elliot-wilson">Github</a> and <a href="https://www.linkedin.com/in/elliot-wilson-4897a81b9/">LinkedIn</a>.</p>
+                    <p>Want to have a word? <a href="mailto: elliot.andrew.wilson@gmail.com">Email</a> me!</p>
+                </section>
             </section>
             <section class="board">
                 <section class="polygon-container">
@@ -54,9 +58,11 @@
             <div class="delete button">Delete</div>
         </div>
         <footer class="nav-links">
-            <a href="https://github.com/elliot-wilson" id="github"><img src="assets/images/GitHub-Mark-32px.png"/></a>
-            <a href="https://www.linkedin.com/in/elliot-wilson-4897a81b9/"><img src="assets/images/linkedin.png"/></a>
-            <a href="mailto: elliot.andrew.wilson@gmail.com"><img src="assets/images/email.png"/></a>
+            <div>
+                <a href="https://github.com/elliot-wilson" id="github"><img src="assets/images/GitHub-Mark-32px.png"/></a>
+                <a href="https://www.linkedin.com/in/elliot-wilson-4897a81b9/"><img src="assets/images/linkedin.png"/></a>
+                <a href="mailto: elliot.andrew.wilson@gmail.com"><img src="assets/images/email.png"/></a>
+            </div>
         </footer>
     </section>
 </body>
