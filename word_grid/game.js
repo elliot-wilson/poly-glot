@@ -23,6 +23,41 @@ class Game {
         this.activateSubmitButton();
         this.registerDelete();
         this.registerScramble();
+        this.activateRevealWords();
+    }
+
+    activateRevealWords() {
+        let modal = document.getElementById('answer-modal');
+        let button = document.querySelector('.reveal-answers');
+        let closer = document.getElementById('modal-word-close');
+
+        button.addEventListener('click', (event) => {
+            modal.style.display = "block";
+            this.displayWordsModal();
+        });
+
+        closer.addEventListener('click', (event) => {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+
+    }
+
+    displayWordsModal () {
+        let wordListModal = document.getElementById('modal-word-list');
+        // this.grid.wordbank.forEach(word => {
+        //     let newWord = document.createElement('li');
+        //     newWord.innerText = word;
+        //     wordListModal.appendChild(newWord);
+        // });
+        let tempMessage = document.createElement('li');
+        tempMessage.innerText = "Coming soon!";
+        wordListModal.appendChild(tempMessage);
     }
 
     activateSubmitButton() {
@@ -288,6 +323,7 @@ class Game {
         this.clearPolygons();
         this.removeSubmitButton();
         this.clearScore();
+        this.clearReveal();
     }
     
     clearSubmittedWords() {        
@@ -308,6 +344,10 @@ class Game {
 
         let scoreBar = document.querySelector('.score-bar-graph');
         scoreBar.style.width = "1%";
+    }
+
+    clearReveal() {
+
     }
     
     clearPolygons() {
