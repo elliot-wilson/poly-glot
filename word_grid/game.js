@@ -215,7 +215,6 @@ class Game {
     }
     
     calculateLevel() {
-
         let maxScore = this.grid.maxScore;
         
         let scorePercentage = this.score / maxScore;
@@ -260,7 +259,6 @@ class Game {
     }
 
     renderLetters(letters) {
-
         letters.forEach(letter => {
             let svg = ShapeUtil.createSVGelement(letter);
             ShapeUtil.createHexagon(letter);
@@ -268,7 +266,6 @@ class Game {
                 svg.classList.add("central-letter");
             }
         });
-
     }
 
     addWord(word) {
@@ -314,14 +311,11 @@ class Game {
     }
     
     clearPolygons() {
-        
         let svgs = document.querySelector('.polygon-container').children;
         while (svgs.length > 0) {
             svgs[0].remove();
         }
     }
-
-
 
 }
 
