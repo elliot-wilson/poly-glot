@@ -50,14 +50,17 @@ class Game {
 
     displayWordsModal () {
         let wordListModal = document.getElementById('modal-word-list');
-        // this.grid.wordbank.forEach(word => {
-        //     let newWord = document.createElement('li');
-        //     newWord.innerText = word;
-        //     wordListModal.appendChild(newWord);
-        // });
-        let tempMessage = document.createElement('li');
-        tempMessage.innerText = "Coming soon!";
-        wordListModal.appendChild(tempMessage);
+
+        if (!wordListModal.hasChildNodes) {
+            // this.grid.wordbank.forEach(word => {
+            //     let newWord = document.createElement('li');
+            //     newWord.innerText = word;
+            //     wordListModal.appendChild(newWord);
+            // });
+            let tempMessage = document.createElement('li');
+            tempMessage.innerText = "Coming soon!";
+            wordListModal.appendChild(tempMessage);
+        }
     }
 
     activateSubmitButton() {
