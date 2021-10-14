@@ -1,3 +1,327 @@
-header{display:flex;justify-content:center;margin:2% 0% 1% 0%}header h1{text-align:center;vertical-align:middle;font-size:80px;background:#fff;padding:8px 20px 8px 20px;border-radius:5px;border:1px solid #000}body{background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../assets/images/arundel 324 ff4v-5.jpeg");backdrop-filter:blur(1px);height:100vh}.topline-elements{display:flex;justify-content:space-between;align-items:center;margin:1% 5%;font-size:20px}.topline-nonbar{padding:4.5px}.new-game{padding:4px}.topline-elements>*:nth-child(2){margin-left:15%}.score-level{display:flex}.score-level>*{margin-left:10px}.score-bar-container{width:280px;background:#fff;border:1px solid #000;border-radius:4px}.score-bar-graph{width:1%;height:28px;background-color:#3cb371;border-radius:2px}.score-display-container{text-align:center}.score-display,.level-display{border:1px solid #000;font-family:sans-serif;vertical-align:middle;background:#fff;border-radius:4px;margin-right:10px}.gameplay-elements{display:flex;justify-content:space-between;flex-wrap:wrap;height:400px;margin-right:5%;margin-left:5%}.instructions{background:#fff;border:1px solid #000;width:300px;height:395px;border-radius:8px}.word-display{background:#fff;width:300px;height:385px;border:1px solid #000;border-radius:8px}.board{display:flex;width:400px;height:415px;flex-direction:column;justify-content:center;align-items:center}.result-display{background:#fff;width:400px;text-align:center;position:absolute;transform:translate(0, -1080%)}.result-display-text{font-family:sans-serif;font-style:italic;color:dimgray}svg text{font-family:sans-serif;font-size:25px}.polygon-container{display:flex;width:400px;height:500px;justify-content:center;align-items:center;flex-wrap:wrap;background:#fff;border:1px solid #000;border-radius:8px}polygon{fill:#ac7216;stroke:#000;stroke-width:5}text{text-anchor:middle;stroke-width:2px}.central-letter polygon{fill:#eac086}.central-letter text{font-weight:700;font-size:27px}.clicked-letter polygon{fill:sienna}.button-div{display:flex;justify-content:center;margin-top:15px}.word-input{background:#fff;width:inherit;text-align:center;transform:translate(0%, -250%);font-family:sans-serif;font-size:18px}.blank{color:dimgray}.instructions p{padding-left:7px;padding-right:7px}.word-display,.instructions p{text-align:center;font-family:sans-serif;padding-top:10px}.text-box-top{font-weight:700}.word-display-list{margin:5px;font-weight:400;font-family:inherit;display:flex;flex-direction:column;align-items:flex-start;flex-wrap:wrap;height:94.5%;list-style:inside}.displayed-word{margin-right:1px}.nav-links{display:flex;justify-content:flex-end;margin-right:5%;margin-top:20px}.nav-links div{background:#fff;border-radius:8px;display:flex;align-items:center}.nav-links img{margin:10px;border-radius:18px}.button-div{font-size:22px}.button{background:#fff;border-radius:4px;font:inherit;font-family:sans-serif;border:1px solid #000;box-shadow:1px 1px 1px #999;margin-right:5px}.button-div .button{padding:.5%}.button:hover{background:#d3d3d3}.button:active,.clicked-button{background:#d3d3d3;transform:translateY(1px);box-shadow:#666}.polygon-container svg:nth-of-type(1){transform:translate(50%, 40%)}.polygon-container svg:nth-of-type(2){transform:translate(50%, 40%)}.polygon-container svg:nth-of-type(3){transform:translate(-150%, 210%)}.polygon-container svg:nth-of-type(4){transform:translate(100%, 0%)}.polygon-container svg:nth-of-type(5){transform:translate(-100%, 0%)}.polygon-container svg:nth-of-type(7){transform:translate(50%, -41%)}@media only screen and (max-width: 1135px){.instructions{display:none}.gameplay-elements{justify-content:space-around}.topline-elements{justify-content:space-around;align-items:self-start}.topline-elements>*:nth-child(2){margin-left:inherit}}@media only screen and (max-width: 805px){.gameplay-elements{flex-direction:column;justify-content:center;align-items:center;margin-top:20px}.button-div{margin-top:40px}.word-display{display:none}}
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+header {
+  display: flex;
+  justify-content: center;
+  margin: 2% 0% 1% 0%;
+}
 
-/*# sourceMappingURL=main.css.map*/
+header h1 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 80px;
+  background: white;
+  padding: 8px 20px 8px 20px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/images/arundel 324 ff4v-5.jpeg");
+  backdrop-filter: blur(1px);
+  height: 100vh;
+}
+
+.topline-elements {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1% 5%;
+  font-size: 20px;
+}
+
+.topline-nonbar {
+  padding: 4.5px;
+}
+
+.new-game {
+  padding: 4px;
+}
+
+.topline-elements > *:nth-child(2) {
+  margin-left: 15%;
+}
+
+.score-level {
+  display: flex;
+}
+
+.score-level > * {
+  margin-left: 10px;
+}
+
+.score-bar-container {
+  width: 280px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.score-bar-graph {
+  width: 1%;
+  height: 28px;
+  background-color: mediumseagreen;
+  border-radius: 2px;
+}
+
+.score-display-container {
+  text-align: center;
+}
+
+.score-display, .level-display {
+  border: 1px solid black;
+  font-family: sans-serif;
+  vertical-align: middle;
+  background: white;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.gameplay-elements {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 400px;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.instructions {
+  background: white;
+  border: 1px solid black;
+  width: 300px;
+  height: 395px;
+  border-radius: 8px;
+}
+
+.word-display {
+  background: white;
+  width: 300px;
+  height: 385px;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.board {
+  display: flex;
+  width: 400px;
+  height: 415px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.result-display {
+  background: white;
+  width: 400px;
+  text-align: center;
+  position: absolute;
+  transform: translate(0, -1080%);
+}
+
+.result-display-text {
+  font-family: sans-serif;
+  font-style: italic;
+  color: dimgray;
+}
+
+svg text {
+  font-family: sans-serif;
+  font-size: 25px;
+}
+
+.polygon-container {
+  display: flex;
+  width: 400px;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: white;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+polygon {
+  fill: #ac7216;
+  stroke: #a0522d;
+  stroke-width: 5;
+}
+
+text {
+  text-anchor: middle;
+  stroke-width: 2px;
+  text-transform: capitalize;
+}
+
+.central-letter polygon {
+  fill: #0067cd;
+}
+
+.central-letter text {
+  font-weight: 700;
+  font-size: 27px;
+  fill: black;
+}
+
+.clicked-letter polygon {
+  fill: #a0522d;
+}
+
+.button-div {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.word-input {
+  background: white;
+  width: inherit;
+  text-align: center;
+  transform: translate(0%, -250%);
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+.blank {
+  color: dimgray;
+}
+
+.instructions p {
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.word-display, .instructions p {
+  text-align: center;
+  font-family: sans-serif;
+  padding-top: 10px;
+}
+
+.text-box-top {
+  font-weight: 700;
+}
+
+.word-display-list {
+  margin: 5px;
+  font-weight: 400;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 94.5%;
+  list-style: inside;
+}
+
+.displayed-word {
+  margin-right: 1px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5%;
+  margin-top: 20px;
+}
+
+.nav-links div {
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links img {
+  margin: 10px;
+  border-radius: 18px;
+}
+
+.button-div {
+  font-size: 22px;
+}
+
+.button {
+  background: white;
+  border-radius: 4px;
+  font: inherit;
+  font-family: sans-serif;
+  border: 1px solid black;
+  box-shadow: 1px 1px 1px #999;
+  margin-right: 5px;
+}
+
+.button-div .button {
+  padding: 0.5%;
+}
+
+.button:hover {
+  background: lightgrey;
+}
+
+.button:active, .clicked-button {
+  background: lightgrey;
+  transform: translateY(1px);
+  box-shadow: #666;
+}
+
+.polygon-container svg:nth-of-type(1) {
+  transform: translate(50%, 40%);
+}
+
+.polygon-container svg:nth-of-type(2) {
+  transform: translate(50%, 40%);
+}
+
+.polygon-container svg:nth-of-type(3) {
+  transform: translate(-150%, 210%);
+}
+
+.polygon-container svg:nth-of-type(4) {
+  transform: translate(100%, 0%);
+}
+
+.polygon-container svg:nth-of-type(5) {
+  transform: translate(-100%, 0%);
+}
+
+.polygon-container svg:nth-of-type(7) {
+  transform: translate(50%, -41%);
+}
+
+@media only screen and (max-width: 1135px) {
+  .instructions {
+    display: none;
+  }
+
+  .gameplay-elements {
+    justify-content: space-around;
+  }
+
+  .topline-elements {
+    justify-content: space-around;
+    align-items: self-start;
+  }
+
+  .topline-elements > *:nth-child(2) {
+    margin-left: inherit;
+  }
+}
+@media only screen and (max-width: 805px) {
+  .gameplay-elements {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .button-div {
+    margin-top: 40px;
+  }
+
+  .word-display {
+    display: none;
+  }
+}

@@ -5,6 +5,7 @@ header {
 }
 
 header h1 {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
     text-align: center;
     vertical-align: middle;
     font-size: 80px;
@@ -142,23 +143,25 @@ svg text {
 
 polygon {
     fill: #ac7216;
-    stroke: black;
+    stroke: #a0522d;
     stroke-width: 5;
 }
 
 text {
     text-anchor: middle;
     stroke-width: 2px;
+    text-transform: capitalize;
 }
 
 
 .central-letter polygon {
-    fill: 	#eac086;
+    fill: #0067cd;
 }
 
 .central-letter text {
     font-weight: 700;
     font-size: 27px;
+    fill: black;
 }
 
 .clicked-letter polygon{
