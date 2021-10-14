@@ -55,6 +55,7 @@ class Game {
             this.clearPolygons();
             let shuffledLetters = this.shuffleLetters();
             this.renderLetters(shuffledLetters);
+            this.registerClick();
         });
     }
 
