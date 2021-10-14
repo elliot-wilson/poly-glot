@@ -51,7 +51,7 @@ class Game {
     displayWordsModal () {
         let wordListModal = document.getElementById('modal-word-list');
 
-        if (!wordListModal.hasChildNodes) {
+        if (wordListModal.childElementCount < 2) {
             // this.grid.wordbank.forEach(word => {
             //     let newWord = document.createElement('li');
             //     newWord.innerText = word;
