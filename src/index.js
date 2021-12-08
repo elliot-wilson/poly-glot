@@ -1,4 +1,4 @@
-import { Game } from '../word_grid/game';
+import { Game } from '../components/game';
 
 document.addEventListener("DOMContentLoaded", () => {
     let game = new Game ();

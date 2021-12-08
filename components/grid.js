@@ -1,4 +1,4 @@
-import { Dictionary } from './best_dictionary.js';
+import { Dictionary } from './dictionary.js';
 
 class Grid {
     
@@ -24,13 +24,13 @@ class Grid {
         return string[Math.floor(Math.random() * string.length)];
     }
 
-    generateLettersArr (letterSize) {
+    generateLettersArr (size) {
 
         let lettersArr = [];
 
         lettersArr.push(this.randomCharFromString(this.vowels()));
 
-        while (lettersArr.length < letterSize) {
+        while (lettersArr.length < size) {
             let letter = this.randomCharFromString(this.alphabet());
             if (!lettersArr.includes(letter)) lettersArr.push(letter);
         }
