@@ -5,76 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="image" property="og:image" content="https://wide-world-seeds.s3.amazonaws.com/poly-glot-homepage.png">
-    <link rel="stylesheet" href="./src/reset.css"/>
-    <link rel="stylesheet" href="./dist/main.css"/>
+    <link rel="stylesheet" href="./src/reset.css" />
+    <link rel="stylesheet" href="./dist/main.css" />
     <script src="https://use.fontawesome.com/4b3cccde11.js"></script>
     <script src="./dist/main.js"></script>
     <title>Poly-Glot</title>
 </head>
 <body>
-    <section>
-        <header>
-            <h1>Poly-Glot</h1>
-        </header>
-        <section class="topline-elements">
-            <div id="new-reveal-container">
-                <div class="new-game button topline-nonbar">New Game</div>
-                <div class="reveal-answers button topline-nonbar">Reveal Words</div>
-                <div id="answer-modal" class="modal">
-                    <div class="modal-content">
-                        <span id="modal-word-close" class="modal-close">&times;</span>
-                        <ul id="modal-word-list"><p>Answers: </p></ul>
+    <header>
+        <h1>Poly-Glot</h1>
+        <h2>a shape-based word game</h2>
+    </header> 
+    <section class="topline-elements">
+        <div class="button">Instructions</div>
+        <div class="button new-game">New Game</div>
+        <div class="button reveal-answers">Reveal Words</div>
+        <div id="answer-modal" class="modal">
+            <div class="modal-content">
+                <span id="modal-word-close" class="modal-close">&times;</span>
+                <ul id="modal-word-list">
+                    <p>Answers: </p>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="game-container">
+        <div class="scoring-elements">
+            <div class="score-texts">
+                <div>Points: <span id="score">0</span></div>
+                <div>Level: <span id="level">Getting Started</span></div>
+            </div>
+            <div class="score-bar-graph"></div>
+        </div>
+        <div class="gameplay-elements">
+            <div class="word-display">
+                <p>You have found <span id="word-count">0</span> words</p>
+                <ul class="word-display-list"></ul>
+            </div>
+            <div class="board-container">
+                <div class="board">
+                    <div class="result-display">
+                        <p class="result-display-text"></p>
+                    </div>
+                    <div class="polygon-container"></div>
+                    <div class="word-input">
+                        <p id="guessed-word" class="blank">Type or click</p>
                     </div>
                 </div>
-            </div>
-            <div class="score-level">
-                <div class="score-display-containter">
-                    <div class="score-display topline-nonbar">Points: <span id="score">0</span></div>
-                </div>
-                <div class="level-display-containter">
-                    <div class="level-display topline-nonbar">Level: <span id="level">Getting Started</span></div>
+                <div class="button-div">
+                    <div class="refresh button"><i class="fa fa-refresh" aria-hidden="true"></i></div>
+                    <div class="delete button">Delete</div>
                 </div>
             </div>
-            <div class="score-bar-container">
-                <div class="score-bar-graph"></div>
-            </div>
-        </section>
-        <section class="gameplay-elements">
-            <section class="instructions">
-                <p class="text-box-top">Instructions:</p>
-                <section id="instructions-text">
-                    <p>Time to play Poly-Glot! Spell words using the letters in the polygons, but watch out: words must be at least 4 letters long, and all words must contain the central letter. Letters may be used more than once.</p>
-                    <p>Four-letter words are worth 1 point, but longer words are worth 1 point per letter. Words that contain every letter get bonus points equal to the number of shapes in the grid. Every puzzle has at least 1 word that includes every letter.</p>
-                    <p>You can spell words by typing or clicking on the letters, and you can also refresh the view to see the letters in a different arrangement.</p>
-                    <p>After you're done, be sure to check out my <a href="https://github.com/elliot-wilson/poly-glot" target="_blank" rel="noopener noreferrer">Github</a> and <a href="https://www.linkedin.com/in/elliot-wilson-4897a81b9/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
-                    <p>Want to have a word? <a href="mailto: elliot.andrew.wilson@gmail.com">Email</a> me!</p>
-                </section>
-            </section>
-            <section class="board">
-                <section class="polygon-container">
-                </section>
-                <section class="result-display">
-                    <span class="result-display-text"></span>
-                </section>
-                <section class="word-input">
-                    <p id="guessed-word" class="blank">Type or click</p>
-                </section>
-            </section>
-            <section class="word-display text-box-top"><p>Words: </p>
-                <ul class="word-display-list"></ul>
-            </section>
-        </section>
-        <div class="button-div">
-            <div class="refresh button"><i class="fa fa-refresh" aria-hidden="true"></i></div>
-            <div class="delete button">Delete</div>
         </div>
-        <footer class="nav-links">
-            <div>
-                <a href="https://github.com/elliot-wilson/poly-glot id="github" target="_blank" rel="noopener noreferrer"><img src="assets/images/GitHub-Mark-32px.png"/></a>
-                <a href="https://www.linkedin.com/in/elliot-wilson-4897a81b9/" target="_blank" rel="noopener noreferrer"><img src="assets/images/linkedin.png"/></a>
-                <a href="mailto: elliot.andrew.wilson@gmail.com"><img src="assets/images/email.png"/></a>
-            </div>
-        </footer>
     </section>
+    <footer class="nav-links">
+        <div>
+            <a href="https://github.com/elliot-wilson/poly-glot id=" github" target="_blank" rel="noopener noreferrer"><img
+                    src="assets/images/GitHub-Mark-32px.png" /></a>
+            <a href="https://www.linkedin.com/in/elliot-wilson-4897a81b9/" target="_blank" rel="noopener noreferrer"><img
+                    src="assets/images/linkedin.png" /></a>
+            <a href="mailto: elliot.andrew.wilson@gmail.com"><img src="assets/images/email.png" /></a>
+        </div>
+    </footer>
 </body>
 </html>

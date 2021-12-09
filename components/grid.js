@@ -80,7 +80,7 @@ class Grid {
         wordbank.forEach(word => {
             if (word.length === 4) {
                 maxScore += 1;
-            }else {
+            } else {
                 maxScore += word.length
                 if (this.pangrams.includes(word)) maxScore += 16;
             }

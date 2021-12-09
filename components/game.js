@@ -71,7 +71,6 @@ class Game {
         let buttonDiv = document.querySelector('.button-div');
         let deleteButton = document.querySelector('.delete');
         buttonDiv.insertBefore(submitButton, deleteButton);
-        
         submitButton.addEventListener('click', event => {
             this.submitWord();
         });
@@ -80,7 +79,6 @@ class Game {
     registerDelete() {
         let deleteButton = document.querySelector('.delete');
         let input = document.querySelector('#guessed-word');
-
         deleteButton.addEventListener('click', event => {
             this.resetInputElement(input);
         });
@@ -320,7 +318,7 @@ class Game {
             this.wordDisplayList.setAttribute("style", "font-size: 12.5px");
         } 
     }
-
+    
     clearGame() {
         this.clearSubmittedWords();
         this.clearPolygons();
@@ -336,6 +334,13 @@ class Game {
         }
     }
     
+    clearPolygons() {
+        let svgs = document.querySelector('.polygon-container').children;
+        while (svgs.length > 0) {
+            svgs[0].remove();
+        }
+    }
+
     removeSubmitButton() {
         const submitButton = document.querySelector('.submit');
         if (submitButton !== null) submitButton.remove();
@@ -353,12 +358,6 @@ class Game {
 
     }
     
-    clearPolygons() {
-        let svgs = document.querySelector('.polygon-container').children;
-        while (svgs.length > 0) {
-            svgs[0].remove();
-        }
-    }
 
 }
 

@@ -1,35 +1,87 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: #0A9396;
+  color: #001219;
+  box-sizing: border-box;
+}
+
 header {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  padding: 0% 0% 0% 5%;
   margin: 2% 0% 1% 0%;
 }
-
 header h1 {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  text-align: center;
   vertical-align: middle;
   font-size: 80px;
-  background: white;
-  padding: 8px 20px 8px 20px;
-  border-radius: 5px;
-  border: 1px solid black;
 }
-
-body {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/images/arundel 324 ff4v-5.jpeg");
-  backdrop-filter: blur(1px);
-  height: 100vh;
+header h2 {
+  position: relative;
+  left: 145px;
 }
 
 .topline-elements {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1% 5%;
+  margin: 2% 18% 2% 18%;
   font-size: 20px;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  background: #D5F2E3;
+  padding: 2% 2% 2% 2%;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-right: 18%;
+  margin-left: 18%;
+}
+.game-container .scoring-elements {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+}
+.game-container .scoring-elements .score-texts {
+  display: flex;
+}
+.game-container .scoring-elements .score-texts > * :first-child {
+  margin-right: 20px;
+}
+.game-container .gameplay-elements {
+  display: flex;
+  height: 100%;
+}
+.game-container .gameplay-elements .board-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 66%;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.polygon-container {
+  display: flex;
+  width: 400px;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .topline-nonbar {
@@ -119,17 +171,8 @@ body {
   margin-right: 10px;
 }
 
-.gameplay-elements {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  height: 400px;
-  margin-right: 5%;
-  margin-left: 5%;
-}
-
 .instructions {
-  background: white;
+  background: #D5F2E3;
   border: 1px solid black;
   width: 300px;
   height: 395px;
@@ -137,20 +180,22 @@ body {
 }
 
 .word-display {
-  background: white;
-  width: 300px;
-  height: 385px;
+  background: #D5F2E3;
+  height: auto;
+  text-align: center;
+  font-family: sans-serif;
+  padding-top: 10px;
+  width: 50%;
   border: 1px solid black;
-  border-radius: 8px;
+  border-radius: 10px;
 }
-
-.board {
-  display: flex;
-  width: 400px;
-  height: 415px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.word-display li {
+  width: 70px;
+  padding: 2px 5px;
+  margin: 6px 0 0 0;
+  text-align: left;
+  border-bottom: 1px solid black;
+  list-style: none;
 }
 
 .result-display {
@@ -172,21 +217,9 @@ svg text {
   font-size: 25px;
 }
 
-.polygon-container {
-  display: flex;
-  width: 400px;
-  height: 500px;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  background: white;
-  border: 1px solid black;
-  border-radius: 8px;
-}
-
 polygon {
-  fill: #ac7216;
-  stroke: #a0522d;
+  stroke: #CA6702;
+  fill: #E9D8A6;
   stroke-width: 5;
 }
 
@@ -196,18 +229,14 @@ text {
   text-transform: capitalize;
 }
 
-.central-letter polygon {
-  fill: #0067cd;
-}
-
 .central-letter text {
   font-weight: 700;
-  font-size: 27px;
+  font-size: 30px;
   fill: black;
 }
 
 .clicked-letter polygon {
-  fill: #a0522d;
+  fill: #005F73;
 }
 
 .button-div {
@@ -217,7 +246,7 @@ text {
 }
 
 .word-input {
-  background: white;
+  background: #D5F2E3;
   width: inherit;
   text-align: center;
   transform: translate(0%, -250%);
@@ -234,12 +263,6 @@ text {
   padding-right: 7px;
 }
 
-.word-display, .instructions p {
-  text-align: center;
-  font-family: sans-serif;
-  padding-top: 10px;
-}
-
 .text-box-top {
   font-weight: 700;
 }
@@ -252,7 +275,6 @@ text {
   flex-direction: column;
   align-items: flex-start;
   flex-wrap: wrap;
-  height: 94.5%;
   list-style: inside;
 }
 
@@ -264,7 +286,6 @@ text {
   display: flex;
   justify-content: flex-end;
   margin-right: 5%;
-  margin-top: 20px;
 }
 
 .nav-links div {
