@@ -1,5 +1,5 @@
 import { Grid } from './grid.js';
-import { ShapeUtil } from './shapeutil.js';
+import { ShapeUtil } from './shape_util.js';
 
 class Game {
     
@@ -16,6 +16,7 @@ class Game {
         
         this.renderLetters(this.grid.lettersArr);
         this.bindEvents();
+        this.clearModal();
     }
     
     bindEvents () {
@@ -27,39 +28,52 @@ class Game {
     }
 
     activateRevealWords() {
-        let modal = document.getElementById('answer-modal');
-        let button = document.querySelector('.reveal-answers');
+        let answerModal = document.getElementById('answer-modal');
+        let button = this.createRevealButton();
         let closer = document.getElementById('modal-word-close');
 
         button.addEventListener('click', (event) => {
-            modal.style.display = "block";
+            answerModal.style.display = "block";
             this.displayWordsModal();
         });
 
         closer.addEventListener('click', (event) => {
-            modal.style.display = "none";
+            answerModal.style.display = "none";
         });
 
         window.addEventListener('click', (event) => {
-            if (event.target == modal) {
-                modal.style.display = "none";
+            if (event.target === answerModal) {
+                answerModal.style.display = "none";
             }
         });
 
     }
 
+    createRevealButton() {
+        let revealButton = document.createElement('div');
+        revealButton.classList.add('button', 'reveal-answers');
+        revealButton.innerText = "Reveal Words";
+
+        let toplineElements = document.querySelector('.topline-elements');
+        let modal = document.getElementById('answer-modal');
+
+        toplineElements.insertBefore(revealButton, modal);
+
+        return revealButton;
+    }
+
     displayWordsModal () {
         let wordListModal = document.getElementById('modal-word-list');
 
-        if (wordListModal.childElementCount < 2) {
-            // this.grid.wordbank.forEach(word => {
-            //     let newWord = document.createElement('li');
-            //     newWord.innerText = word;
-            //     wordListModal.appendChild(newWord);
-            // });
-            let tempMessage = document.createElement('li');
-            tempMessage.innerText = "Coming soon!";
-            wordListModal.appendChild(tempMessage);
+        if (wordListModal.childElementCount === 0) {
+            this.grid.wordbank.forEach(word => {
+                let newWord = document.createElement('li');
+                newWord.innerText = word;
+                wordListModal.appendChild(newWord);
+            });
+            // let tempMessage = document.createElement('li');
+            // tempMessage.innerText = "Coming soon!";
+            // wordListModal.appendChild(tempMessage);
         }
     }
 
@@ -306,10 +320,21 @@ class Game {
 
     addWord(word) {
         this.words.push(word);
+        this.updateWordCountDisplay();
         let wordElement = document.createElement("li");
         wordElement.innerText = word;
         this.wordDisplayList.appendChild(wordElement);
         this.adjustWordDisplay();
+    }
+
+    updateWordCountDisplay() {
+        document.getElementById('word-count').innerText = this.words.length;
+        let pluralizer = document.getElementById('word-count-pluralizer');
+        if (this.words.length === 1) {
+            pluralizer.innerText = "";
+        } else {
+            pluralizer.innerText = "s";
+        }
     }
 
     adjustWordDisplay() {
@@ -332,6 +357,8 @@ class Game {
         while (words.length > 0) {
             words[0].remove();
         }
+        this.words = [];
+        this.updateWordCountDisplay();
     }
     
     clearPolygons() {
@@ -354,8 +381,19 @@ class Game {
         scoreBar.style.width = "1%";
     }
 
-    clearReveal() {
+    clearModal() {
+        let loadingModal = document.getElementById('loading-modal');
+        loadingModal.style.display = "none";
+    }
 
+    clearReveal() {
+        const revealButton = document.querySelector('.reveal-answers');
+        if (revealButton !== null) revealButton.remove();
+
+        const revealedWords = document.getElementById('modal-word-list').children
+        while (revealedWords.length > 0) {
+            revealedWords[0].remove();
+        }
     }
     
 

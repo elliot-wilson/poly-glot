@@ -14,18 +14,39 @@
 <body>
     <header>
         <h1>Poly-Glot</h1>
-        <h2>a shape-based word game</h2>
+        <h2>a Vanilla JavaScript word game</h2>
     </header> 
     <section class="topline-elements">
-        <div class="button">Instructions</div>
+        <div class="button instructions">Instructions</div>
+        <div id="instructions-modal" class="modal">
+            <div class="modal-instructions-container">
+                <p>Instructions: </p>
+                <div>
+                    <p>Time to play Poly-Glot! Spell words using the letters in the polygons, but watch out: words must be at least 4
+                        letters long, and all words must contain the central letter. Letters may be used more than once.</p>
+                    <p>Four-letter words are only worth 1 point, but longer words are worth 1 point per letter. Words that contain every letter ("pangrams")
+                        get bonus points equal to the number of shapes in the grid. Every puzzle has at least 1 pangram.</p>
+                    <p>You can spell words by typing or clicking on the letters, and you can also refresh the view to see the letters in a
+                        different arrangement.</p>
+                    <p>Want to learn more? Connect with me on <a href="https://www.linkedin.com/in/elliot-wilson-4897a81b9/" target="_blank" rel="noopener noreferrer">LinkedIn</a> or check out my <a href="https://elliotwilson.me" target="_blank" rel="noopener noreferrer">portfolio</a>.</p>
+                    <p>This game was inspired by the New York Times' <a href="https://www.nytimes.com/puzzles/spelling-bee" target="_blank" rel="noreferrer noopener">Spelling Bee</a>.</p>
+                </div>
+            </div>
+        </div>
         <div class="button new-game">New Game</div>
-        <div class="button reveal-answers">Reveal Words</div>
+        <div id="loading-modal" class="modal">
+            <div class="loading-modal-container">
+                <p>Hang tight! I'm quickly building a new puzzle...</p>
+            </div>
+        </div>
+        <!-- <div class="button reveal-answers">Reveal Words</div> -->
         <div id="answer-modal" class="modal">
             <div class="modal-content">
                 <span id="modal-word-close" class="modal-close">&times;</span>
-                <ul id="modal-word-list">
+                <div class="modal-word-list-container">
                     <p>Answers: </p>
-                </ul>
+                    <ul id="modal-word-list"></ul>
+                </div>
             </div>
         </div>
     </section>
@@ -39,7 +60,7 @@
         </div>
         <div class="gameplay-elements">
             <div class="word-display">
-                <p>You have found <span id="word-count">0</span> words</p>
+                <p>You have found <span id="word-count">0</span> word<span id="word-count-pluralizer">s</span>.</p>
                 <ul class="word-display-list"></ul>
             </div>
             <div class="board-container">

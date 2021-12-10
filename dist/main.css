@@ -2,10 +2,6 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
 body {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
   background-color: #0A9396;
   color: #001219;
   box-sizing: border-box;
@@ -14,8 +10,8 @@ body {
 header {
   display: flex;
   flex-direction: column;
-  padding: 0% 0% 0% 5%;
-  margin: 2% 0% 1% 0%;
+  padding: 0% 0% 0% 2%;
+  margin: 1% 0% 1% 0%;
 }
 header h1 {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
@@ -24,26 +20,72 @@ header h1 {
 }
 header h2 {
   position: relative;
-  left: 145px;
+  left: 130px;
 }
 
 .topline-elements {
+  width: 900px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 2% 18% 2% 18%;
+  margin: 2% auto 2% auto;
   font-size: 20px;
+}
+.topline-elements .instructions {
+  height: auto;
+  width: auto;
+}
+.topline-elements .button {
+  padding: 5px;
+}
+.topline-elements .button:hover {
+  cursor: pointer;
+}
+.topline-elements #instructions-modal .modal-instructions-container {
+  background: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 60px;
+  width: 60%;
+  margin: auto;
+}
+.topline-elements #instructions-modal .modal-instructions-container > p {
+  font-weight: 600;
+}
+.topline-elements #instructions-modal .modal-instructions-container p {
+  margin: 0 0 10px 0;
+}
+.topline-elements #loading-modal .loading-modal-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: auto;
+  width: 40%;
+  height: 300px;
+}
+.topline-elements #modal-word-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  max-height: calc(100vh - 100px);
+}
+.topline-elements #modal-word-list li {
+  width: 120px;
+  padding: 4px;
 }
 
 .game-container {
+  width: 900px;
   display: flex;
   flex-direction: column;
   background: #D5F2E3;
   padding: 2% 2% 2% 2%;
   border: 1px solid black;
   border-radius: 10px;
-  margin-right: 18%;
-  margin-left: 18%;
+  margin: auto;
 }
 .game-container .scoring-elements {
   display: flex;
@@ -53,6 +95,7 @@ header h2 {
 }
 .game-container .scoring-elements .score-texts {
   display: flex;
+  margin-bottom: 12px;
 }
 .game-container .scoring-elements .score-texts > * :first-child {
   margin-right: 20px;
@@ -92,14 +135,6 @@ header h2 {
   display: flex;
 }
 
-.new-game {
-  padding: 4px;
-}
-
-.reveal-answers {
-  margin-left: 20px;
-}
-
 .score-level {
   display: flex;
 }
@@ -125,6 +160,10 @@ header h2 {
   border: 1px solid #888;
   width: 80%;
   border-radius: 6px;
+}
+.modal-content p {
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .modal-close {
@@ -180,7 +219,7 @@ header h2 {
 }
 
 .word-display {
-  background: #D5F2E3;
+  background: white;
   height: auto;
   text-align: center;
   font-family: sans-serif;
@@ -311,7 +350,6 @@ text {
   font-family: sans-serif;
   border: 1px solid black;
   box-shadow: 1px 1px 1px #999;
-  margin-right: 5px;
 }
 
 .button-div .button {
