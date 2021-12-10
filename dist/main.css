@@ -20,6 +20,7 @@ header h1 {
 }
 header h2 {
   position: relative;
+  width: fit-content;
   left: 130px;
 }
 
@@ -329,22 +330,23 @@ text {
   margin-right: 1px;
 }
 
-.nav-links {
+footer {
+  margin: 5% 5% 0 2%;
   display: flex;
-  justify-content: flex-end;
-  margin-right: 5%;
+  justify-content: space-between;
 }
-
-.nav-links div {
-  background: white;
-  border-radius: 8px;
+footer .about {
+  display: flex;
+  flex-direction: column;
+}
+footer .nav-links {
   display: flex;
   align-items: center;
+  font-size: 45px;
 }
-
-.nav-links img {
-  margin: 10px;
-  border-radius: 18px;
+footer .nav-links > a {
+  color: #001219;
+  margin-right: 10px;
 }
 
 .button {
