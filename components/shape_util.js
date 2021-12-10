@@ -1,15 +1,18 @@
 const ShapeUtil = {
 
     createSVGelement(letter) {
+        let div = document.createElement('div');
         let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         
-        svg.setAttribute("height", 105);
-        svg.setAttribute("width", 105);
+        svg.setAttribute("height", 100);
+        svg.setAttribute("width", 100);
         svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        svg.setAttribute("viewBox", "0 0 105 105");
         svg.classList.add(`${letter}-container`);
         
         let container = document.querySelector(".polygon-container");
-        container.appendChild(svg);
+        container.appendChild(div);
+        div.appendChild(svg);
         
         return svg;
     },

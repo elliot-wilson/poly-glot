@@ -71,9 +71,6 @@ class Game {
                 newWord.innerText = word;
                 wordListModal.appendChild(newWord);
             });
-            // let tempMessage = document.createElement('li');
-            // tempMessage.innerText = "Coming soon!";
-            // wordListModal.appendChild(tempMessage);
         }
     }
 
@@ -114,7 +111,7 @@ class Game {
 
         svgs.forEach(svg => {
             svg.addEventListener("click", event => {
-                let letter = event.currentTarget.children[1].innerHTML;
+                let letter = event.currentTarget.children[0].children[1].innerHTML;
                 this.processLetter(letter);
             });
         });
@@ -157,7 +154,7 @@ class Game {
             this.resetInputElement(input);
             let errorDisplay = document.querySelector('.result-display-text');
             errorDisplay.innerText = "don't do that!";
-            setTimeout(this.clearResult, 1250);
+            setTimeout(this.clearResult, 1500);
         }
     }
 
@@ -171,8 +168,12 @@ class Game {
     changeKeyColor(letter) {
         let container = document.querySelector(`.${letter}-container`);
         container.classList.add("clicked-letter");
+        container.style.transform = "scale(0.85)";
+        // container.setAttribute("viewBox", "0 0 125 125");
         setTimeout(() => {
             container.classList.remove("clicked-letter");
+            container.style.transform = "scale(1)";
+            // container.setAttribute("viewBox", "0 0 105 105");
         }, 175);
     }
 
