@@ -79,7 +79,7 @@ class Game {
         submitButton.classList.add('submit', 'button');
         submitButton.innerText = "Enter";
         
-        let buttonDiv = document.querySelector('.button-div');
+        let buttonDiv = document.querySelector('.buttons-div');
         let deleteButton = document.querySelector('.delete');
         buttonDiv.insertBefore(submitButton, deleteButton);
         submitButton.addEventListener('click', event => {
@@ -119,31 +119,37 @@ class Game {
 
     processKeyLogEvent(event) {
         let letter = event.key;
-        this.processLetter(letter);
+        this.processLetter(letter, event);
     }
-
-    processLetter(letter) {
+    
+    processLetter(letter, fromKeyLog) {
         let input = document.querySelector('#guessed-word');
         let alphabet = "abcdefghijklmnopqrstuvwxyz";
 
+        
         if (input.classList.contains("blank")) {
             input.innerText = "";
             input.classList.remove("blank");
         }
-        
+
+        if (fromKeyLog) {
+            if (this.grid.lettersArr.includes(letter)){
+                this.changeKeyColorAndSize(letter);
+            }
+
+            if (letter === "Enter"){
+                let submitButton = document.querySelector('.submit');
+                this.submitWord();
+                this.pressButton(submitButton);
+            } else if (letter === "Backspace") {
+                let deleteButton = document.querySelector('.delete');
+                this.pressButton(deleteButton);
+                input.innerText = input.innerText.slice(0, input.innerText.length - 1);
+            }
+        }
+
         if (alphabet.includes(letter)) {
             input.innerText += letter;
-            if (this.grid.lettersArr.includes(letter)){
-                this.changeKeyColor(letter);
-            }
-        } else if (letter === "Enter"){
-            let submitButton = document.querySelector('.submit');
-            this.submitWord();
-            this.pressButton(submitButton);
-        } else if (letter === "Backspace") {
-            let deleteButton = document.querySelector('.delete');
-            this.pressButton(deleteButton);
-            input.innerText = input.innerText.slice(0, input.innerText.length - 1);
         }
 
         if (input.innerText.length === 0) {
@@ -165,15 +171,13 @@ class Game {
         }, 175);
     }
 
-    changeKeyColor(letter) {
+    changeKeyColorAndSize(letter) {
         let container = document.querySelector(`.${letter}-container`);
         container.classList.add("clicked-letter");
-        container.style.transform = "scale(0.85)";
-        // container.setAttribute("viewBox", "0 0 125 125");
+        container.style.transform = "scale(0.8";
         setTimeout(() => {
             container.classList.remove("clicked-letter");
             container.style.transform = "scale(1)";
-            // container.setAttribute("viewBox", "0 0 105 105");
         }, 175);
     }
 

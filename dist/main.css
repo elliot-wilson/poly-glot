@@ -121,6 +121,9 @@ header h2 {
   font-style: italic;
   color: dimgray;
 }
+.game-container .gameplay-elements .board .polygon-container svg:hover {
+  cursor: pointer;
+}
 
 .polygon-container {
   display: flex;
@@ -271,10 +274,15 @@ text {
   fill: #005F73;
 }
 
-.button-div {
+.buttons-div {
   display: flex;
   justify-content: center;
   margin-top: 15px;
+  font-size: 22px;
+  padding: 0.5%;
+}
+.buttons-div > div:hover {
+  cursor: pointer;
 }
 
 .word-input {
@@ -331,10 +339,6 @@ text {
   border-radius: 18px;
 }
 
-.button-div {
-  font-size: 22px;
-}
-
 .button {
   background: white;
   border-radius: 4px;
@@ -344,7 +348,7 @@ text {
   box-shadow: 1px 1px 1px #999;
 }
 
-.button-div .button {
+.button {
   padding: 0.5%;
 }
 

@@ -1,13 +1,16 @@
 import { Game } from '../components/game';
-import { activateInstructionModalListener, activateLoadingModal } from '../components/modal_util';
+import { activateInstructionModalListener } from '../components/modal_util';
+import { registerMouseDown, registerMouseUp } from '../components/mouse_util';
 
 document.addEventListener("DOMContentLoaded", () => {
     let game = new Game ();
-
+    
     let boundKeyLogger = game.processKeyLogEvent.bind(game);
     document.addEventListener('keydown', boundKeyLogger);
-
+    
     activateInstructionModalListener();
+    registerMouseDown();
+    registerMouseUp();
 
     const newGame = document.querySelector('.new-game');
     

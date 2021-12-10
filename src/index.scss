@@ -135,7 +135,6 @@ header {
 
             .result-display {
                 height: 16px;
-                // width: 400px;
                 text-align: center;
             }
             
@@ -143,6 +142,13 @@ header {
                 font-family: sans-serif;
                 font-style: italic;
                 color: dimgray;
+            }
+
+            .polygon-container {
+
+                svg:hover {
+                    cursor: pointer;
+                }
             }
         }
         
@@ -302,11 +308,6 @@ text {
     text-transform: capitalize;
 }
 
-
-// .central-letter polygon {
-//     fill: #EE9B00;
-// }
-
 .central-letter text {
     font-weight: 700;
     font-size: 30px;
@@ -317,10 +318,16 @@ text {
     fill: #005F73;
 }
 
-.button-div {
+.buttons-div {
     display: flex;
     justify-content: center;
     margin-top: 15px;
+    font-size: 22px;
+    padding: 0.5%;
+
+    & > div:hover {
+        cursor: pointer;
+    }
 }
 
 .word-input {
@@ -379,10 +386,6 @@ text {
     border-radius: 18px;
 }
 
-.button-div {
-    font-size: 22px;
-}
-
 .button {
     background: white;
     border-radius: 4px;
@@ -392,7 +395,7 @@ text {
     box-shadow: 1px 1px 1px #999;
 }
 
-.button-div .button {
+.button {
     padding: 0.5%
 }
 
