@@ -59073,7 +59073,6 @@ const Dictionary = {
   "vestry": true,
   "vests": true,
   "vestura": true,
-  "vesuvius": true,
   "vetch": true,
   "vetches": true,
   "veteran": true,

@@ -5,7 +5,7 @@ export function registerMouseDown() {
         svg.addEventListener("mousedown", event => {
             if (event.currentTarget === svg) {
                 svg.classList.add("clicked-letter");
-                svg.style.transform = "scale(0.8)";
+                svg.style.transform = "scale(0.85)";
             }
         });
     });

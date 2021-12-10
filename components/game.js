@@ -1,5 +1,6 @@
 import { Grid } from './grid.js';
 import { ShapeUtil } from './shape_util.js';
+import { registerMouseDown, registerMouseUp } from '../components/mouse_util';
 
 class Game {
     
@@ -15,8 +16,12 @@ class Game {
         this.words = [];
         
         this.renderLetters(this.grid.lettersArr);
+        this.spinBoard();
         this.bindEvents();
         this.clearModal();
+        registerMouseDown();
+        registerMouseUp();
+        
     }
     
     bindEvents () {
@@ -102,8 +107,25 @@ class Game {
             this.clearPolygons();
             let shuffledLetters = this.shuffleLetters();
             this.renderLetters(shuffledLetters);
+            this.spinBoard();
             this.registerClick();
+            registerMouseDown();
+            registerMouseUp();
         });
+    }
+
+    spinBoard() {
+        let divs = Array.from(document.querySelector('.polygon-container').children);
+
+        divs.forEach(div => {
+            let svg = div.children[0];
+            svg.classList.add("clicked-letter");
+            svg.style.transform = "scale(0.85)";
+            setTimeout(() => {
+                svg.classList.remove("clicked-letter");
+                svg.style.transform = "scale(1)";
+            });
+        })
     }
 
     registerClick() {
@@ -174,11 +196,11 @@ class Game {
     changeKeyColorAndSize(letter) {
         let container = document.querySelector(`.${letter}-container`);
         container.classList.add("clicked-letter");
-        container.style.transform = "scale(0.8";
+        container.style.transform = "scale(0.85)";
         setTimeout(() => {
             container.classList.remove("clicked-letter");
             container.style.transform = "scale(1)";
-        }, 175);
+        }, 150);
     }
 
 

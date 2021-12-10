@@ -114,13 +114,15 @@ header h2 {
   padding: 5px;
 }
 .game-container .gameplay-elements .board .result-display {
-  height: 16px;
+  margin-top: 15px;
+  height: 25px;
   text-align: center;
 }
 .game-container .gameplay-elements .board .result-display-text {
   font-family: sans-serif;
   font-style: italic;
   color: dimgray;
+  font-size: 25px;
 }
 .game-container .gameplay-elements .board .polygon-container {
   width: 300px;
@@ -133,6 +135,22 @@ header h2 {
   transition: transform 0.2s;
 }
 .game-container .gameplay-elements .board .polygon-container svg:hover {
+  cursor: pointer;
+}
+.game-container .gameplay-elements .buttons-div {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 22px;
+}
+.game-container .gameplay-elements .buttons-div > div {
+  padding: 5px;
+  margin-right: 15px;
+}
+.game-container .gameplay-elements .buttons-div > div:last-child {
+  margin-right: 0px;
+}
+.game-container .gameplay-elements .buttons-div > div:hover {
   cursor: pointer;
 }
 
@@ -275,23 +293,12 @@ text {
   fill: #005F73;
 }
 
-.buttons-div {
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-  font-size: 22px;
-  padding: 0.5%;
-}
-.buttons-div > div:hover {
-  cursor: pointer;
-}
-
 .word-input {
   background: #D5F2E3;
   width: inherit;
   text-align: center;
   font-family: sans-serif;
-  font-size: 18px;
+  font-size: 25px;
 }
 
 .blank {
