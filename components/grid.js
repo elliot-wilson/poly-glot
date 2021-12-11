@@ -67,12 +67,12 @@ class Grid {
             
             Object.keys(Dictionary).forEach(word => {
                 if (regex.test(word) && word.includes(keyLetter)) wordbank.push(word);
-                if (boundPangram(word, lettersArr)) pangrams.push(word);
+                if (word.length >= 7 && boundPangram(word, lettersArr)) pangrams.push(word);
             });
 
         }
 
-        return {pangrams: pangrams, lettersArr: lettersArr, wordbank: wordbank, keyLetter: keyLetter};
+        return { pangrams, lettersArr, wordbank, keyLetter };
     }
 
     maxScore (wordbank) {

@@ -19,6 +19,7 @@ class Game {
         this.spinBoard();
         this.bindEvents();
         this.clearModal();
+        
         registerMouseDown();
         registerMouseUp();
         
@@ -178,7 +179,7 @@ class Game {
             this.resetInputElement(input);
         }
         
-        if (input.innerText.length > 30) {
+        if (input.innerText.length > 20) {
             this.resetInputElement(input);
             let errorDisplay = document.querySelector('.result-display-text');
             errorDisplay.innerText = "don't do that!";
