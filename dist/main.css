@@ -71,7 +71,6 @@ header h2 {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  max-height: calc(100vh - 100px);
 }
 .topline-elements #modal-word-list li {
   width: 120px;

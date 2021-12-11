@@ -76,10 +76,6 @@ header {
             margin: auto;
             width: 40%;
             height: 300px;
-            
-            p {
-                // font-weight: 600;
-            }
         }
     }
     
@@ -87,7 +83,6 @@ header {
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;
-        max-height: calc(100vh - 100px);
     
         li {
             width: 120px;
