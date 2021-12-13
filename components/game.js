@@ -148,6 +148,7 @@ class Game {
     }
 
     processKeyLogEvent(event) {
+        console.log(event);
         let letter = event.key;
         this.processLetter(letter, event);
     }
