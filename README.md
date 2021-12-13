@@ -26,7 +26,7 @@ To solve this issue, I decided to build Poly-Glot, a simple JavaScript applicati
 
 ## A Spelling Bee Algorithm
 
-* I use a fairly straightword algorithm to generate valid spelling bee puzzles. I generate a string of 7 unique letters that contains at least one vowel, and then I scan my dictionary to check whether this letter combination results in a pangram (a word that contains all 7 letters).
+* I use a fairly straightword algorithm to generate valid Spelling Bee puzzles. I generate a string of 7 unique letters that contains at least one vowel, and then I scan my dictionary to check whether this letter combination results in a pangram (a word that contains all 7 letters).
 
 ````javascript
 //grid.js
@@ -75,7 +75,7 @@ This is not a fast process, but I took a few steps to make it more bearable:
 
 ### Algorithmic Shortcuts
 * My `generateLettersArr` function begins every letter-sequence with a vowel. This eliminates obviously bad sequences like `zxqrtvw`.
-* I arbitrarily choose the middle letter of the sequence as the central "key" letter. I suppose I could have written an algorithm that rotated through each letter of the sequence randomly to see whether selecting THAT letter as the key letter permitted a sufficient number of valid words, but I'm willing to wager that the vast majority of sequences that have valid pangrams will also have plenty of valid words no matter which letter is the key letter. Why make extra work for myself?
+* I arbitrarily choose the middle letter of the sequence as the central "key" letter. (I could have written an algorithm that rotated through each letter of the sequence randomly to see whether selecting THAT letter as the key letter permitted a sufficient number of valid words, but I'm willing to wager that the vast majority of sequences that have valid pangrams will also have plenty of valid words no matter which letter is the key letter.)
 * I only perform my pangram check if the dictionary word has 7 letters or more.
 
 ## Interactive Gameplay
