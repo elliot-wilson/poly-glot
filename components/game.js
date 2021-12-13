@@ -78,6 +78,13 @@ class Game {
                 wordListModal.appendChild(newWord);
             });
         }
+
+        console.log(wordListModal.children.length);
+
+        if (wordListModal.children.length > 196) {
+            document.documentElement.style.setProperty('--modal-word-list-font-size', '15px');
+            document.documentElement.style.setProperty('--modal-word-list-word-length', '80px');
+        }
     }
 
     activateSubmitButton() {
@@ -367,9 +374,12 @@ class Game {
 
     adjustWordDisplay() {
 
-        if (this.words.length > 66){
+        if (this.words.length > 90){
             this.wordDisplayList.setAttribute("style", "font-size: 12.5px");
-        } 
+        } else if (this.words.length > 105 ){
+            this.wordDisplayList.setAttribute("style", "font-size: 8px");
+            document.documentElement.style.setProperty('--word-display-list-word-length', '55px');
+        }
     }
     
     clearGame() {

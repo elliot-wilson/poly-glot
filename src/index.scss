@@ -1,3 +1,9 @@
+:root {
+    --modal-word-list-font-size: 20px;
+    --modal-word-list-word-length: 120px;
+    --word-display-list-word-length: 70px;
+}
+
 body {
     background-color: #0A9396;
     color: #001219;
@@ -45,7 +51,7 @@ header {
     }
 
     #instructions-modal {
-
+        
         .modal-instructions-container {
             background: white;
             border: 1px solid black;
@@ -53,7 +59,7 @@ header {
             padding: 60px;
             width: 60%;
             margin: auto;
-
+            
             & > p {
                 font-weight: 600;
             }
@@ -83,9 +89,10 @@ header {
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;
-    
+        
         li {
-            width: 120px;
+            width: var(--modal-word-list-word-length);
+            font-size: var(--modal-word-list-font-size);
             padding: 4px;
         }
     }
@@ -100,17 +107,17 @@ header {
     border: 1px solid black;
     border-radius: 10px;
     margin: auto;
-
+    
     .scoring-elements {
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-size: 20px;
-
+        
         .score-texts {
             display: flex;
             margin-bottom: 12px;
-
+            
             & > * :first-child {
                 margin-right: 20px;
             }
@@ -212,7 +219,7 @@ polygon {
     border: 1px solid #888;
     width: 80%;
     border-radius: 6px;
-
+    
     p {
         font-weight: 600;
         margin-bottom: 10px;
@@ -276,14 +283,27 @@ polygon {
     width: 50%;
     border: 1px solid black;
     border-radius: 10px;
-
-    li {
-        width: 70px;
-        padding: 2px 5px;
-        margin: 6px 0 0 0;
-        text-align: left;
-        border-bottom: 1px solid black;
-        list-style: none;
+    
+    .word-display-list {
+        margin: 5px;
+        font-weight: 400;
+        font-family: inherit;
+        display: flex;
+        flex-direction: column;
+        align-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        list-style: inside;
+        height: 500px;
+        
+        li {
+            width: var(--word-display-list-word-length);
+            padding: 2px 5px;
+            margin: 6px 5px 0 0;
+            text-align: left;
+            border-bottom: 1px solid black;
+            list-style: none;
+        }
     }
 }
 
@@ -319,16 +339,6 @@ svg text {
     color: dimgray;    
 }
 
-.word-display-list {
-    margin: 5px;
-    font-weight: 400;
-    font-family: inherit;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    list-style: inside;
-}
 
 footer {
     margin: 5% 5% 0 2%;

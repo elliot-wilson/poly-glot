@@ -1,6 +1,12 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+:root {
+  --modal-word-list-font-size: 20px;
+  --modal-word-list-word-length: 120px;
+  --word-display-list-word-length: 70px;
+}
+
 body {
   background-color: #0A9396;
   color: #001219;
@@ -73,7 +79,8 @@ header h2 {
   align-items: flex-start;
 }
 .topline-elements #modal-word-list li {
-  width: 120px;
+  width: var(--modal-word-list-word-length);
+  font-size: var(--modal-word-list-font-size);
   padding: 4px;
 }
 
@@ -243,10 +250,22 @@ polygon {
   border: 1px solid black;
   border-radius: 10px;
 }
-.word-display li {
-  width: 70px;
+.word-display .word-display-list {
+  margin: 5px;
+  font-weight: 400;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  list-style: inside;
+  height: 500px;
+}
+.word-display .word-display-list li {
+  width: var(--word-display-list-word-length);
   padding: 2px 5px;
-  margin: 6px 0 0 0;
+  margin: 6px 5px 0 0;
   text-align: left;
   border-bottom: 1px solid black;
   list-style: none;
@@ -280,17 +299,6 @@ svg text {
 
 .blank {
   color: dimgray;
-}
-
-.word-display-list {
-  margin: 5px;
-  font-weight: 400;
-  font-family: inherit;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  list-style: inside;
 }
 
 footer {
