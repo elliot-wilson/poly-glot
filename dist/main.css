@@ -11,6 +11,7 @@ body {
   background-color: #0A9396;
   color: #001219;
   box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 header {
@@ -20,7 +21,6 @@ header {
   margin: 1% 0% 1% 0%;
 }
 header h1 {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   vertical-align: middle;
   font-size: 80px;
 }
@@ -302,7 +302,7 @@ svg text {
 }
 
 footer {
-  margin: 5% 5% 0 2%;
+  margin: 40px 5% 0 2%;
   display: flex;
   align-items: center;
   justify-content: space-between;
