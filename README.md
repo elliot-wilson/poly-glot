@@ -71,7 +71,7 @@ This is not a fast process, but I took a few steps to make it more bearable:
 ### A Pre-Processed Dictionary
 
 * I started with a <a href="http://www.gwicks.net/dictionaries.htm" target="_blank">dictionary</a> of American English capped at 77,000 words. Larger dictionaries &mdash; such as the Scrabble dictionary, with around 279,000 words &mdash; took way too long to scan.
-* I pre-processed this dictionary to remove all words with < 4 letters, as well as words that had more than 7 unique letters. (Since you're limited to the letters in the honeycomb, words with too many different letters cannot ever be valid.)
+* I pre-processed this dictionary to remove all words with < 4 letters, as well as words that had more than 9 unique letters. (Since you're limited to the letters in the honeycomb, words with too many different letters cannot ever be valid. I could have set my limit at 7 unique letters, but I wanted my game to be able to grow. See below!)
 
 ### Algorithmic Shortcuts
 * My `generateLettersArr` function begins every letter-sequence with a vowel. This eliminates obviously bad sequences like `zxqrtvw`.
@@ -132,7 +132,7 @@ class Game {
 
 ## Generating New Games
 
-* The most annoying part of building this game was designing the logic that allowed a game to be cleared and replaced by a new game. The core of the problem was that the callbacks for Event Listeners need a "snapshot" of the current gameboard whenever they're created, whether that's from a bound function or an arrow function whose scope includes the gameboard. This "snapshot" gets out of date when you create a new game, so you need to remove old Event Listener if you don't want weirdness to ensue &mdash; for example, the ability to get points for entering words from the PREVIOUS game. Often, the easiest solution to this problem was simply to delete and rebuild game-dependant HTML elements at every refresh.
+* The most finnicky part of building this game was designing the logic that allowed for a game to be cleared and replaced by a new game. The core of the problem was that the callbacks for Event Listeners need a "snapshot" of the current gameboard whenever they're created, whether that's from a bound function or an arrow function whose scope includes the gameboard. This "snapshot" gets out of date when you create a new game, so you need to remove old Event Listener if you don't want weirdness to ensue &mdash; for example, the ability to get points for entering words from the PREVIOUS game. Often, the easiest solution to this problem was simply to delete and rebuild game-dependant HTML elements at every refresh.
 
 # What's next?
 
