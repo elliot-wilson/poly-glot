@@ -79,8 +79,6 @@ class Game {
             });
         }
 
-        console.log(wordListModal.children.length);
-
         if (wordListModal.children.length > 196) {
             document.documentElement.style.setProperty('--modal-word-list-font-size', '15px');
             document.documentElement.style.setProperty('--modal-word-list-word-length', '80px');
@@ -132,7 +130,7 @@ class Game {
             setTimeout(() => {
                 svg.classList.remove("clicked-letter");
                 svg.style.transform = "scale(1)";
-            });
+            }, 75);
         })
     }
 
@@ -148,7 +146,6 @@ class Game {
     }
 
     processKeyLogEvent(event) {
-        console.log(event);
         let letter = event.key;
         this.processLetter(letter, event);
     }
@@ -197,6 +194,7 @@ class Game {
 
     pressButton(button) {
         button.classList.add('clicked-button');
+        this.spinBoard();
         setTimeout(() => {
             button.classList.remove('clicked-button');
         }, 175);
